@@ -1,5 +1,6 @@
+
 create table account{
-	account_id Serial Primary key ,
+	account_id Serial Primary key,
 	account_name text not null unique,
 	passphrase  varchar(256) not null,
 	role varchar(64) check(role = 'teacher' or role = 'student' or role = 'TA')
@@ -12,4 +13,26 @@ create table questionnaire(
 	yes numeric,
 	no numeric,
 	
+);
+
+create table comment(
+	comment_id serial primary key,
+	lecture_datail_id integer references lecture_detail(lecture_detail_id) on update cascade on delete cascade,
+	account_id interger references account(account_id) on update cascade on delete cascade,
+	section_id integer references section(section_id) on update cascade on delete cascade,
+	comment varchar(100) not null
+);
+
+create table lecture_owner(
+	lecture_owner_id serial primary key,
+	account_id integer account(account_id) on update cascade on delete cascade,
+	lecture_id integer lecture(lecture_id) on update cascade on delete cascade
+);
+
+create table comment_analysis(
+	comment_analysis_id serial primary key,
+	lecture_detail_id integer lecture_detail(lecture_detail_id) on update cascade on delete cascade,
+	section_id integer section(section_id) on update cascade on delete cascade,
+	keyword text not null,
+	count integer not null
 );
