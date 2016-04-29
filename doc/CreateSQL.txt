@@ -42,3 +42,18 @@ create table section(
 	lecture_detail_id integer lecture_detail(lecture_detail_id) on update cascade on delete cascade,
 	section_title text not null,
 );
+
+create table lecture(
+	lecture_id serial primary key,
+	lecture_name text not null,
+	grade integer not null check(grade > 4 ),
+	department text,
+	required boolean not null,
+)
+
+create table lecture_detail(
+	lecture_detail_id serial primary key,
+	lecture_id integer lecture(lecture_id) on update cascade on delete cascade
+	times integer not null,
+	title text not null,
+)
