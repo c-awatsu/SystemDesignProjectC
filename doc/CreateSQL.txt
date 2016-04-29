@@ -36,3 +36,9 @@ create table comment_analysis(
 	keyword text not null,
 	count integer not null
 );
+
+create table section(
+	section_id serial primary key,
+	lecture_detail_id integer lecture_detail(lecture_detail_id) on update cascade on delete cascade,
+	section_title text not null,
+);
