@@ -1,0 +1,15 @@
+create table account{
+	account_id Serial Primary key ,
+	account_name text not null unique,
+	passphrase  varchar(256) not null,
+	role varchar(64) check(role = 'teacher' or role = 'student' or role = 'TA')
+);
+
+create table questionnaire(
+	questionnaire_id Serial Primary key,
+	lecture_id integer REFERENCES lecture(lecture_id)ON UPDATE CASCADE ON DELETE SE,
+	section_id integer REFERENCES section(section_id)ON UPDATE CASCADE ON DELETE SE
+	yes numeric,
+	no numeric,
+	
+);
