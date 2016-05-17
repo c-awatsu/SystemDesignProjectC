@@ -11,8 +11,15 @@ create table questionnaire(
 	lecture_id integer REFERENCES lecture(lecture_id)ON UPDATE CASCADE ON DELETE SE,
 	section_id integer REFERENCES section(section_id)ON UPDATE CASCADE ON DELETE SE
 	yes numeric,
-	no numeric,
-	
+	no numeric
+);
+
+create table lecture(
+	lecture_id serial primary key,
+	lecture_name text not null,
+	grade integer not null check(grade > 4 ),
+	department text,
+	required boolean not null
 );
 
 create table comment(
@@ -40,20 +47,13 @@ create table comment_analysis(
 create table section(
 	section_id serial primary key,
 	lecture_detail_id integer lecture_detail(lecture_detail_id) on update cascade on delete cascade,
-	section_title text not null,
+	section_title text not null
 );
 
-create table lecture(
-	lecture_id serial primary key,
-	lecture_name text not null,
-	grade integer not null check(grade > 4 ),
-	department text,
-	required boolean not null,
-)
 
 create table lecture_detail(
 	lecture_detail_id serial primary key,
 	lecture_id integer lecture(lecture_id) on update cascade on delete cascade
 	times integer not null,
-	title text not null,
-)
+	title text not null
+);
