@@ -4,7 +4,7 @@ import org.apache.wicket.guice.GuiceComponentInjector;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
-import com.SysC.signIn.AbstractSignInPage;
+import com.SysC.signIn.SignInPage;
 
 /**
  * Application object for your web application.
@@ -20,7 +20,7 @@ public class WicketApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return AbstractSignInPage.class;
+		return SignInPage.class;
 	}
 
 	/**
