@@ -19,6 +19,7 @@ public class AbstractSignInPage extends WebPage{
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
+		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forUrl("jquery/current/jquery.js"));
 		response.render(CssHeaderItem.forUrl("bootstrap/current/css/bootstrap.min.css"));
 		response.render(CssHeaderItem.forUrl("bootstrap/current/css/bootstrap-theme.min.css"));
