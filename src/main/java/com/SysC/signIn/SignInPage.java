@@ -7,8 +7,13 @@ import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.model.Model;
 
 import com.SysC.component.ErrorAlertPanel;
+import com.SysC.service.ISignService;
+import com.google.inject.Inject;
 
 public class SignInPage extends AbstractSignInPage {
+
+	@Inject
+	private ISignService signService;
 	private static final long serialVersionUID = -4239028352453322459L;
 
 	public static final String SIGN_ERROR = "ログインIdかパスワードが間違っています";
@@ -16,6 +21,9 @@ public class SignInPage extends AbstractSignInPage {
 
 	public SignInPage() {
 		add(new ErrorAlertPanel("feedback"));
+		if(signService.existUser().isEmpty()){
+			//TODO 管理者登録ページに遷移
+		}
 
 
 		Form<Void> form = new Form<Void>("form") {

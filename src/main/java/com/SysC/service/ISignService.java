@@ -1,5 +1,6 @@
 package com.SysC.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.SysC.bean.Sign;
@@ -14,4 +15,5 @@ public interface ISignService {
 	 * @return 認証成功時はaccountIdの{@link Optional}, それ以外は空の{@link Optional}
 	 */
 	public Optional<Sign> authenticate(SignIn authentication);
+	public List<Integer> existUser();
 }
