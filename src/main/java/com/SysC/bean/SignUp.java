@@ -16,6 +16,9 @@ public class SignUp implements Serializable {
 
 	@NonNull
 	private String passphrase;
+	
+	@NonNull
+	private String cpassphrase;
 
 	@NonNull
 	private String role;
@@ -24,6 +27,6 @@ public class SignUp implements Serializable {
 	private String accountName;
 
 	public SignUp(){
-		this("","","","");
+		this("","","","","");
 	}
 }

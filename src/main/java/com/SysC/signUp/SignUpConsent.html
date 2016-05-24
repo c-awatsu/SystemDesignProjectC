@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<wicket:extend>
+		<label>アカウント登録情報</label>
+		<div wicket:id="feedback"></div>
+		<div align="center">
+			<table class="table">
+				<tr>
+					<th class="col-sm-3">ログインID</th>
+					<td><span wicket:id="accountName"></span></td>
+				</tr>
+				<tr>
+					<th class="col-sm-3">パスワード</th>
+					<td><span wicket:id="passphrase"></span><br> <span>（パスワードは隠して表示しています）</span></td>
+				</tr>
+			</table>
+
+			<button type="button" class="btn btn-primary" wicket:id="createAccount">はい</button>
+			<button type="button" class="btn btn-default" wicket:id="toSignUpPage">いいえ</button>
+		</div>
+	</wicket:extend>
+</body>
+</html>

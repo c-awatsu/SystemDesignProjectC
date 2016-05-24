@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<wicket:extend>
+		<!--  <div wicket:id="feedback"></div>-->
+		<div align ="center">
+			<label>管理者登録ページ</label>
+		</div>
+		<form class = "form-horizontal" wicket:id="form">
+			<fieldset>
+					<div class="form-group">
+						<label class = "col-sm-3 control-label">ログインID</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" wicket:id="accountName" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class = "col-sm-3 control-label">使用するパスワードを入力してください</label>
+						<div class = "col-sm-6">
+						<input class="form-control" type="password" wicket:id="passphrase" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class = "col-sm-3 control-label">もう一度同じパスワードを入力してください</label>
+						<div class = "col-sm-6">
+						<input class="form-control" type="password" wicket:id="cpassphrase" />
+						</div>
+					</div>
+					
+					<div class ="form-group">
+						<div style = "text-align:center;">
+							<button type="submit" class ="btn btn-primary">登録</button>
+						</div>
+					</div>
+			</fieldset>
+				</form>
+				
+				<span wicket:id = "error">同じパスワードを入力してください</span>
+
+	</wicket:extend>
+</body>
+</html>
