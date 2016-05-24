@@ -21,7 +21,6 @@ public class SignRepository implements ISignRepository{
 
 	@Override
 	public List<Integer> fetchAccountId() {
-		// TODO 自動生成されたメソッド・スタブ
 		List<Integer> accountIds = new ArrayList<>();
 		try{
 			conn = JDBCUtill.getConnection(conn);
@@ -34,12 +33,19 @@ public class SignRepository implements ISignRepository{
 			while(result.next()){
 				accountIds.add(result.getInt(1));
 			}
-
 		}
 		catch(SQLException e){
 			e.printStackTrace();
 		}
 		return accountIds;
+	}
+
+	@Override
+	public int insert(String accountName,String passphrase) {
+		//TODO 引数のaccountNameとpassphraseをPreparedStatementにセット
+		//ここではSQLの実行にexecuteUpdateを使う
+		//resultには更新がかかった行数が返ってくるのでそれをそのまま返す
+		return 0;
 	}
 
 }

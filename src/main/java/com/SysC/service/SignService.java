@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.SysC.bean.Sign;
 import com.SysC.bean.SignIn;
+import com.SysC.bean.SignUp;
 import com.SysC.dao.ISignRepository;
 import com.google.inject.Inject;
 
@@ -21,6 +22,11 @@ public class SignService implements ISignService{
 	@Override
 	public List<Integer> existUser() {
  		return signRepository.fetchAccountId();
+	}
+
+	@Override
+	public boolean joinAccount(SignUp signUp) {
+		return false;
 	}
 
 
