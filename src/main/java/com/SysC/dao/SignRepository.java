@@ -33,6 +33,8 @@ public class SignRepository implements ISignRepository{
 			while(result.next()){
 				accountIds.add(result.getInt(1));
 			}
+			conn.close();
+			pstmt.close();
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -42,10 +44,20 @@ public class SignRepository implements ISignRepository{
 
 	@Override
 	public int insert(String accountName,String passphrase) {
-		//TODO 引数のaccountNameとpassphraseをPreparedStatementにセット
-		//ここではSQLの実行にexecuteUpdateを使う
-		//resultには更新がかかった行数が返ってくるのでそれをそのまま返す
-		return 0;
+		int result = 0;
+		try{
+			conn = JDBCUtill.getConnection(conn);
+			String sql = "insert into acccount(account_name,passphrase) values(?,?)";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			result = pstmt.executeUpdate();
+
+			conn.close();
+			pstmt.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

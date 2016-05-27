@@ -1,20 +1,27 @@
 package com.SysC.signIn;
 
+import lombok.val;
+
 import org.apache.wicket.markup.html.HTML5Attributes;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.validation.validator.StringValidator;
 
+import com.SysC.MySession;
+import com.SysC.bean.SignIn;
 import com.SysC.component.ErrorAlertPanel;
+import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
+import com.SysC.signUp.AdminSignUpPage;
 import com.google.inject.Inject;
 
 public class SignInPage extends AbstractSignInPage {
+	private static final long serialVersionUID = -4239028352453322459L;
 
 	@Inject
 	private ISignService signService;
-	private static final long serialVersionUID = -4239028352453322459L;
 
 	public static final String SIGN_ERROR = "ログインIdかパスワードが間違っています";
 
@@ -22,17 +29,18 @@ public class SignInPage extends AbstractSignInPage {
 	public SignInPage() {
 		add(new ErrorAlertPanel("feedback"));
 		if(signService.existUser().isEmpty()){
-			//TODO 管理者登録ページに遷移
+			setResponsePage(AdminSignUpPage.class);
 		}
 
 
-		Form<Void> form = new Form<Void>("form") {
+		Form<SignIn> form = new Form<SignIn>("form") {
 			private static final long serialVersionUID = 3199958418352980849L;
 
 			@Override
 			protected void onSubmit() {
-
-			}
+				val sign = signService.authenticate(getModelObject());
+				MySession.get().signIn(sign);
+			} 
 		};
 
 		form.add(new RequiredTextField<String>("accountName"){
@@ -44,6 +52,7 @@ public class SignInPage extends AbstractSignInPage {
 				super.onInitialize();
 				setLabel(Model.of(LABEL_NAME));
 				add(new HTML5Attributes());
+				add(StringValidator.lengthBetween(Validation.SIGNING_MIN_LENGTH,Validation.SIGNING_MAX_LENGTH));
 			}
 		});
 
@@ -56,6 +65,7 @@ public class SignInPage extends AbstractSignInPage {
 				super.onInitialize();
 				setLabel(Model.of(LABEL_NAME));
 				add(new HTML5Attributes());
+				add(StringValidator.lengthBetween(Validation.SIGNING_MIN_LENGTH, Validation.SIGNING_MAX_LENGTH));
 			}
 		});
 

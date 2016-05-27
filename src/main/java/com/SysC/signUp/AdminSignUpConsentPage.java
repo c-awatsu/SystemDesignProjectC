@@ -15,14 +15,15 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
 import com.SysC.bean.SignUp;
+import com.SysC.costant.ARSRoles;
 import com.SysC.service.ISignService;
 import com.google.inject.Inject;
 
 /**
- *{@link SignUpPage}で入力された情報でアカウントを新規登録していいか確認するページ
+ *{@link AdminSignUpPage}で入力された情報でアカウントを新規登録していいか確認するページ
  */
 
-public class SignUpConsentPage extends SignUpPage{
+public class AdminSignUpConsentPage extends AdminSignUpPage{
 
 	private static final long serialVersionUID = 4348105834523080142L;
 
@@ -30,11 +31,11 @@ public class SignUpConsentPage extends SignUpPage{
 
 	//ServiceやRepositoryを呼ぶときは必ずInterfaceを呼び@Injectをつける
 	//詳しく知りたい人はDIコンテナでググってください
-	
+
 	@Inject
 	private ISignService signService;
 
-	public SignUpConsentPage(@NonNull IModel<SignUp> signUpModel){
+	public AdminSignUpConsentPage(@NonNull IModel<SignUp> signUpModel){
 		setDefaultModel(new CompoundPropertyModel<>(signUpModel));
 
 		val feedback = new FeedbackPanel("feedback");
@@ -64,6 +65,7 @@ public class SignUpConsentPage extends SignUpPage{
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
+				getModelObject().setRole(ARSRoles.ADMIN);
 				if(signService.joinAccount(getModelObject())){
 					setResponsePage(SignUpFinishPage.class);
 				}
@@ -80,7 +82,7 @@ public class SignUpConsentPage extends SignUpPage{
 
 			@Override
 			public void onClick() {
-				setResponsePage(SignUpPage.class);
+				setResponsePage(AdminSignUpPage.class);
 			}
 		});
 	}
