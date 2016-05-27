@@ -4,7 +4,9 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
+
+import com.SysC.signIn.SignInPage;
 
 public class AbstractSignUpPage extends WebPage{
 
@@ -13,7 +15,15 @@ public class AbstractSignUpPage extends WebPage{
 
 	public AbstractSignUpPage() {
 
-		add(new Label("toTop"));
+		add(new Link<Void>("toTop"){
+			private static final long serialVersionUID = 1774363617748723639L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(SignInPage.class);
+			}
+
+		});
 	}
 
 	@Override

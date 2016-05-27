@@ -2,6 +2,8 @@ package com.SysC.signUp;
 
 import org.apache.wicket.markup.html.link.Link;
 
+import com.SysC.signIn.SignInPage;
+
 
 
 /**
@@ -17,7 +19,7 @@ public class SignUpFinishPage extends AdminSignUpPage{
 
 			@Override
 			public void onClick() {
-				//setResponsePage(SignInPage.class);
+				setResponsePage(SignInPage.class);
 			}
 
 		});
