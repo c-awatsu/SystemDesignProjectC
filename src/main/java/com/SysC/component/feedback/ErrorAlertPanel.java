@@ -1,4 +1,4 @@
-package com.SysC.component;
+package com.SysC.component.feedback;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.ErrorLevelFeedbackMessageFilter;

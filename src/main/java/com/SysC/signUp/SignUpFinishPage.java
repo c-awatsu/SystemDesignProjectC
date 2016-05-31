@@ -9,7 +9,7 @@ import com.SysC.signIn.SignInPage;
 /**
  * アカウント作成完了ページ
  */
-public class SignUpFinishPage extends AdminSignUpPage{
+public class SignUpFinishPage extends AbstractSignUpPage{
 
 	private static final long serialVersionUID = -8102557029996247889L;
 	public SignUpFinishPage(){

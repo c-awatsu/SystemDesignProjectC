@@ -9,7 +9,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
 
 import com.SysC.bean.SignUp;
-import com.SysC.component.ErrorAlertPanel;
+import com.SysC.component.feedback.ErrorAlertPanel;
 import com.SysC.costant.Validation;
 /**
  * 管理者のアカウント登録を行うクラス

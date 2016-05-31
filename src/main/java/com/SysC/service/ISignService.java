@@ -7,7 +7,9 @@ import com.SysC.bean.Sign;
 import com.SysC.bean.SignIn;
 import com.SysC.bean.SignUp;
 import com.SysC.dao.ISignRepository;
+import com.google.inject.ImplementedBy;
 
+@ImplementedBy(SignService.class)
 public interface ISignService {
 
 	/**

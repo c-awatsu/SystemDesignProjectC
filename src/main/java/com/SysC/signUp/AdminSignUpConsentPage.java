@@ -9,12 +9,12 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
 import com.SysC.bean.SignUp;
+import com.SysC.component.feedback.TargetedErrorAlertPanel;
 import com.SysC.costant.ARSRoles;
 import com.SysC.service.ISignService;
 import com.google.inject.Inject;
@@ -23,7 +23,7 @@ import com.google.inject.Inject;
  *{@link AdminSignUpPage}で入力された情報でアカウントを新規登録していいか確認するページ
  */
 
-public class AdminSignUpConsentPage extends AdminSignUpPage{
+public class AdminSignUpConsentPage extends AbstractSignUpPage{
 
 	private static final long serialVersionUID = 4348105834523080142L;
 
@@ -38,8 +38,7 @@ public class AdminSignUpConsentPage extends AdminSignUpPage{
 	public AdminSignUpConsentPage(@NonNull IModel<SignUp> signUpModel){
 		setDefaultModel(new CompoundPropertyModel<>(signUpModel));
 
-		val feedback = new FeedbackPanel("feedback");
-		feedback.setOutputMarkupId(true);
+		val feedback = new TargetedErrorAlertPanel("feedback");
 		add(feedback);
 
 		add(new Label("accountName"));
@@ -69,7 +68,7 @@ public class AdminSignUpConsentPage extends AdminSignUpPage{
 				if(signService.joinAccount(getModelObject())){
 					setResponsePage(SignUpFinishPage.class);
 				}
-				if(!hasErrorMessage()){
+				if(hasErrorMessage()){
 					error(CREATE_ACCOUNT_ERROR);
 					target.add(feedback);
 				}

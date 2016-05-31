@@ -19,9 +19,17 @@ public interface ISignRepository {
 
 	/**
 	 *
-	 * @param signUp アカウント登録フォームに入力された情報
+	 * @param accountName アカウント登録フォームに入力されたアカウント名
+	 * @param passphrase  アカウント登録フォームに入力されたパスワードをSHA256方式で暗号化したもの
 	 * @return accountテーブルの更新された行があればtrue,なければfalse
 	 */
 	public int insert(String accountName,String passphrase);
+
+	/**
+	 * @param accountName アカウント登録フォームに入力されたアカウント名
+	 * @param passphrase  アカウント登録フォームに入力されたパスワード
+	 * @retun 検索されたアカウントID
+	 */
+	public int fetchAccountId(String accountName,String passphrase);
 
 }

@@ -6,12 +6,13 @@ import org.apache.wicket.markup.html.HTML5Attributes;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
 
 import com.SysC.MySession;
 import com.SysC.bean.SignIn;
-import com.SysC.component.ErrorAlertPanel;
+import com.SysC.component.feedback.ErrorAlertPanel;
 import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
@@ -27,20 +28,23 @@ public class SignInPage extends AbstractSignInPage {
 
 
 	public SignInPage() {
-		add(new ErrorAlertPanel("feedback"));
 		if(signService.existUser().isEmpty()){
 			setResponsePage(AdminSignUpPage.class);
 		}
 
+		add(new ErrorAlertPanel("feedback"));
 
-		Form<SignIn> form = new Form<SignIn>("form") {
+		Form<SignIn> form = new Form<SignIn>("form",new CompoundPropertyModel<>(new SignIn())) {
 			private static final long serialVersionUID = 3199958418352980849L;
 
 			@Override
 			protected void onSubmit() {
 				val sign = signService.authenticate(getModelObject());
 				MySession.get().signIn(sign);
-			} 
+				if(MySession.get().isSignedIn()){
+					System.out.println("入れた");
+				}
+			}
 		};
 
 		form.add(new RequiredTextField<String>("accountName"){

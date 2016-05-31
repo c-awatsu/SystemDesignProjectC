@@ -33,7 +33,7 @@
 		<jetty9.version>9.2.13.v20150730</jetty9.version>
 		<log4j.version>2.5</log4j.version>
 		<junit.version>4.12</junit.version>
-		<postgresql.version>9.4.1207.jre7</postgresql.version>
+		<postgresql.version>9.4.1208.jre7</postgresql.version>
 		<lombok.version>1.16.8</lombok.version>
 		<jquery.version>2.1.4</jquery.version>
 		<bootstrap.version>3.3.6</bootstrap.version>

@@ -18,17 +18,18 @@ import com.SysC.bean.Sign;
 
 @ToString
 public class MySession extends AbstractAuthenticatedWebSession{
+	private static final long serialVersionUID = -8641210825955256991L;
 
 	@Getter
 	private Optional<Sign> loginInfo;
 
+	public static MySession get(){
+		return (MySession) Session.get();
+	}
+
 	public MySession(Request request) {
 		super(request);
 		loginInfo = empty();
-	}
-
-	public static MySession get(){
-		return (MySession) Session.get();
 	}
 
 	@Override
@@ -37,8 +38,6 @@ public class MySession extends AbstractAuthenticatedWebSession{
 		loginInfo = empty();
 		super.invalidate();
 	}
-
-	private static final long serialVersionUID = -8641210825955256991L;
 
 	@Override
 	public Roles getRoles() {
