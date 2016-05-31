@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,20 +12,17 @@
 			<option value = "grade3">3年生</option>
 			<option value = "grade4">4年生</option>
 		</select>
-		<input type="submit" />
 
 		<select wicket:id="subject">
 			<option value = "subject1">バイオマテリアル学科</option>
 			<option value = "subject2">光システム学科</option>
 			<option value = "subject3">グローバルシステムデザイン学科</option>
 		</select>
-		<input type="submit" />
 	
 		<select wicket:id="format">
 			<option value = "required">必修</option>
 			<option value = "selection">選択</option>
 		</select>
-		<input type="submit" />
 		
 		<tr wicket:id="lectureListView">
 		<td wicket:id="lectureName">C言語</td>

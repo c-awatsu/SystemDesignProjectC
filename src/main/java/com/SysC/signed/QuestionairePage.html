@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="submit" wicket:id="ok" value="理解した"/>
+	<input type="submit" wicket:id="no" value="分らない"/>
+	
+	<form name="submitForm1 wicket:id="submitForm1">
+		<input type="text" wicket:id="questionField" />
+		<input type="submit" /> 
+	</form>
+	
+	<form name="submitForm2" wicket:id="submitForm2">
+		<select wicket:id="business">
+			<option value = "business1">課題ができたはず</option>
+		</select>
+	
+		<input type="text" wicket:id="otherField" />
+		<input type="text" wicket:id="positionField" />
+		<input type="submit" /> 
+	</form>
+</body>
+</html>
