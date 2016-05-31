@@ -1,4 +1,4 @@
-package com.SysC.component.feedback;
+package com.SysC.component;
 
 import org.apache.wicket.authorization.Action;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeAction;
