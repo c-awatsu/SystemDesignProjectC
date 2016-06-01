@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<span wicket:id="lectureName">授業名</span>
+
+	<select wicket:id="lectureChoice">
+		<option value="lec1">第1回</option>
+		<option value="lec2">第2回</option>
+		<option value="lec3">第3回</option>
+		<option value="lec4">第4回</option>
+		<option value="lec5">第5回</option>
+		<option value="lec6">第6回</option>
+		<option value="lec7">第7回</option>
+		<option value="lec8">第8回</option>
+		<option value="lec9">第9回</option>
+		<option value="lec10">第10回</option>
+		<option value="lec11">第11回</option>
+		<option value="lec12">第12回</option>
+		<option value="lec13">第13回</option>
+		<option value="lec14">第14回</option>
+		<option value="lec15">第15回</option>
+		<option value="lec16">第16回</option>
+	</select>
+	
+	<input type="text" wicket:id="title" />
+	
+	<form wicket:id="lectureStartButton" method="post">
+			<input type="submit" wicket:id="lectureStart" value="授業開始"/>
+	</form>
+	
+	<form wicket:id="downloadButton" method="post">
+			<input type="submit" wicket:id="download" value="コメントログを保存"/>
+	</form>
+</body>
+</html>

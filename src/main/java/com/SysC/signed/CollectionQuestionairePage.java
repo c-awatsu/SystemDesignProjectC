@@ -18,7 +18,7 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 	public CollectionQuestionairePage(){
 		
 		//セッション開始ボタン
-		final TextField<String> sessionField = new TextField<String>(
+		TextField<String> sessionField = new TextField<String>(
 				"sessionField",
 				new Model<String>(""));
 		
