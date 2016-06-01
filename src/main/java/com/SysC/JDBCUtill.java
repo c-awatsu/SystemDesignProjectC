@@ -13,7 +13,7 @@ public class JDBCUtill {
 				if(Objects.isNull(conn)){
 					Class.forName("org.postgresql.Driver");
 					//Port番号等は個人の環境で変わります
-					return DriverManager.getConnection("jdbc:postgresql://localhost:5432/sysc?useUnicode=true&characterEncoding=UTF-8","postgres","postgres");
+					return DriverManager.getConnection("jdbc:postgresql://localhost:5432/SysC?useUnicode=true&characterEncoding=UTF-8","postgres","postgres");
 				}
 			}catch(SQLException e){
 				System.out.println("コネクションの取得に失敗しました。DBのパスかUserNameかPasswordに間違いがあります。");
