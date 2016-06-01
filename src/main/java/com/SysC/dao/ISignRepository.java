@@ -23,7 +23,7 @@ public interface ISignRepository {
 	 * @param passphrase  アカウント登録フォームに入力されたパスワードをSHA256方式で暗号化したもの
 	 * @return accountテーブルの更新された行があればtrue,なければfalse
 	 */
-	public int insert(String accountName,String passphrase);
+	public int insert(String accountName,String passphrase,String role);
 
 	/**
 	 * @param accountName アカウント登録フォームに入力されたアカウント名
@@ -31,5 +31,11 @@ public interface ISignRepository {
 	 * @retun 検索されたアカウントID
 	 */
 	public int fetchAccountId(String accountName,String passphrase);
+
+	/**
+	 * @param accountId アカウントID
+	 * @return 検索されたシステム上の権限
+	 */
+	public String fetchARSRole(int accountId);
 
 }

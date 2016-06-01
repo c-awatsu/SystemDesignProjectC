@@ -40,13 +40,14 @@ public class SignRepository implements ISignRepository{
 	}
 
 	@Override
-	public int insert(String accountName,String passphrase) {
+	public int insert(String accountName,String passphrase,String role) {
 		int result = 0;
-		String sql = "insert into account(account_name,passphrase) values(?,?)";
+		String sql = "insert into account(account_name,passphrase,role) values(?,?,?)";
 		try(Connection conn = JDBCUtill.getConnection()){
 			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
 				pstmt.setString(1, accountName);
 				pstmt.setString(2, passphrase);
+				pstmt.setString(3, role);
 				result = pstmt.executeUpdate();
 			}
 		}catch(SQLException e){
@@ -61,14 +62,16 @@ public class SignRepository implements ISignRepository{
 	public int fetchAccountId(String accountName, String passphrase){
 		ResultSet result = null;
 		int accountId = 0;
-		String sql = "select account_id from account where accout_name = ? and passphrase = ?";
+		String sql = "select account_id from account where account_name = ? and passphrase = ?";
 		try(Connection conn = JDBCUtill.getConnection()){
 			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
 				pstmt.setString(1, accountName);
 				pstmt.setString(2, passphrase);
 				result = pstmt.executeQuery();
+				while(result.next()){
+					accountId = result.getInt(1);
+				}
 			}
-			accountId = result.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}catch(NullPointerException e){
@@ -78,6 +81,31 @@ public class SignRepository implements ISignRepository{
 		return accountId;
 
 	}
+
+	@Override
+	public String fetchARSRole(int accountId) {
+		ResultSet result = null;
+		String role = "";
+		String sql = "select role from account where account_id = ?";
+		try(Connection conn = JDBCUtill.getConnection()){
+			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+				pstmt.setInt(1, accountId);
+				result = pstmt.executeQuery();
+				while(result.next()){
+					role = result.getString(1);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+
+		return role;
+
+	}
+
+
 
 
 

@@ -3,6 +3,8 @@ package com.SysC;
 import org.apache.wicket.guice.GuiceComponentInjector;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 
 import com.SysC.signIn.SignInPage;
 
@@ -45,6 +47,12 @@ public class WicketApplication extends WebApplication
 	public void mountResource() {
 
 	}
+
+	@Override
+	public MySession newSession(Request request, Response response) {
+		return new MySession(request);
+	}
+
 
 	/**
 	 * Google Guiceを初期化する.

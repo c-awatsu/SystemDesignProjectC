@@ -12,10 +12,11 @@ public class LectureItem implements Serializable{
 
 	private long lectureId;
 	private int grade;
+	private String department;
 	private boolean format;
 
 	public LectureItem(){
-		this(1,1,true);
+		this(1,1,"",true);
 	}
 
 }

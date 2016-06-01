@@ -1,9 +1,12 @@
 package com.SysC.service;
 
+import static java.util.Optional.*;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 
 import com.SysC.bean.Sign;
 import com.SysC.bean.SignIn;
@@ -18,7 +21,12 @@ public class SignService implements ISignService{
 
 	@Override
 	public Optional<Sign> authenticate(SignIn authentication) {
-		return null;
+		Sign sign = null;
+		int accountId = signRepository.fetchAccountId(authentication.getAccountName(),
+													  DigestUtils.sha256Hex(authentication.getPassphrase()));
+		String role = signRepository.fetchARSRole(accountId);
+		sign = new Sign(accountId,authentication.getAccountName(),new Roles(role));
+		return ofNullable(sign);
 	}
 
 	@Override
@@ -28,10 +36,11 @@ public class SignService implements ISignService{
 
 	@Override
 	public boolean joinAccount(SignUp signUp) {
-					return	signRepository.insert
-									(signUp.getAccountName(),
-									 DigestUtils.sha256Hex(signUp.getPassphrase())
-									 )==1;
+		return	signRepository.insert
+						(signUp.getAccountName(),
+						 DigestUtils.sha256Hex(signUp.getPassphrase())
+						,signUp.getRole()
+						)==1;
 	}
 
 
