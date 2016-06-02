@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<wicket:extend>
+		<div align="center">
+		<form wicket:id=form class = "form-inline">
+
+			<select wicket:id="grade">
+				<option value="grade1">1年生</option>
+				<option value="grade2">2年生</option>
+				<option value="grade3">3年生</option>
+				<option value="grade4">4年生</option>
+			</select>
+
+			<select wicket:id="department">
+				<option value="bioMaterial">バイオマテリアル学科</option>
+				<option value="optoElectoronic">光システム学科</option>
+				<option value="gsd">グローバルシステムデザイン学科</option>
+			</select>
+
+			<select wicket:id="format">
+				<option value="required">必修</option>
+				<option value="selection">選択</option>
+			</select>
+
+			<select wicket:id="term">
+				<option value="spring">春学期</option>
+				<option value="fall">秋学期</option>
+			</select>
+
+
+			<input type="submit" class="btn btn-primary" value="絞り込み"/>
+		</form>
+		</div>
+		<table>
+			<tr wicket:id="lectureListView">
+				<td wicket:id="lectureName">C言語</td>
+				<td wicket:id="lectureGrade">1年</td>
+				<td wicket:id="lectureFormat">必修</td>
+			</tr>
+		</table>
+	</wicket:extend>
+</body>
+</html>

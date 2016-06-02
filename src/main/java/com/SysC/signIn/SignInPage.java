@@ -16,7 +16,7 @@ import com.SysC.component.feedback.ErrorAlertPanel;
 import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
-import com.SysC.signed.LectureSelectPage;
+import com.SysC.signed.lecture.LectureSelectPage;
 import com.google.inject.Inject;
 
 public class SignInPage extends AbstractSignInPage {

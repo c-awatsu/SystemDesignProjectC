@@ -1,4 +1,4 @@
-package com.SysC.signed;
+package com.SysC.signed.questionnaire;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +11,8 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.eclipse.jetty.client.Origin.Address;
+
+import com.SysC.signed.AbstractSignedPage;
 
 public class CollectionQuestionairePage extends AbstractSignedPage{
 	private static final long serialVersionUID = 1L;

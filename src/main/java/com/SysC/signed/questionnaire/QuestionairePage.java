@@ -1,4 +1,4 @@
-package com.SysC.signed;
+package com.SysC.signed.questionnaire;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +12,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
 
 import com.SysC.costant.Validation;
+import com.SysC.signed.AbstractSignedPage;
 
 
 public class QuestionairePage extends AbstractSignedPage{
