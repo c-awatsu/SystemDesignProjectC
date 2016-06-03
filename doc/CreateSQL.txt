@@ -59,4 +59,17 @@ create table comment_analysis(
 	count integer not null
 );
 
+alter table account drop constraint account_role_check;
 
+alter table account add check (role = 'TEACHER' or role = 'STUDENT' or role = 'TA' or role = 'ADMIN');
+
+alter table lecture drop grade;
+
+alter table lecture add grade text;
+
+alter table lecture add check(grade = '1年' or grade ='2年' or grade ='3年' or grade = '4年');
+
+
+alter table lecture alter column required type text;
+
+alter table lecture  add check(required = 'required' or required = 'selection')
