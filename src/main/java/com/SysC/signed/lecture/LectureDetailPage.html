@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<span wicket:id="lectureName">授業名</span>
@@ -25,13 +25,13 @@
 		<option value="lec15">第15回</option>
 		<option value="lec16">第16回</option>
 	</select>
-	
+
 	<input type="text" wicket:id="title" />
-	
+
 	<form wicket:id="lectureStartButton" method="post">
 			<input type="submit" wicket:id="lectureStart" value="授業開始"/>
 	</form>
-	
+
 	<form wicket:id="downloadButton" method="post">
 			<input type="submit" wicket:id="download" value="コメントログを保存"/>
 	</form>

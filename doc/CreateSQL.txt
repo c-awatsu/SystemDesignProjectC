@@ -3,7 +3,7 @@ create table account(
 	account_id Serial Primary key,
 	account_name text not null unique,
 	passphrase  varchar(256) not null,
-	role varchar(64) check(role = 'teacher' or role = 'student' or role = 'TA')
+	role varchar(64) check(role = 'TEACHER' or role = 'STUDENT' or role = 'TA' or role = 'ADMIN')
 );
 
 create table lecture(
@@ -59,7 +59,28 @@ create table comment_analysis(
 	count integer not null
 );
 
+<<<<<<< HEAD
 alter table account drop constraint account_role_check;
+=======
+create table business_template(
+	business_template_id serial primary key,
+	lecture_id integer REFERENCES lecture(lecture_id) on update cascade on delete cascade,
+	business text
+);
+
+create table business_log(
+	business_template_id primary key REFERENCES business_template(business_template_id) on update cascade on delete cascade,
+	lecture_datail_id integer references lecture_detail(lecture_detail_id) on update cascade on delete cascade,
+	count integer
+);
+
+create table other_log(
+	other_log_id serial primary key,
+	lecture_datail_id integer references lecture_detail(lecture_detail_id) on update cascade on delete cascade,
+	value text
+);
+
+>>>>>>> 46cff6eae70d104f33807258ccc74683d5c8c9d0
 
 alter table account add check (role = 'TEACHER' or role = 'STUDENT' or role = 'TA' or role = 'ADMIN');
 

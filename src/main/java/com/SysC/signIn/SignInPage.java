@@ -16,6 +16,7 @@ import com.SysC.component.feedback.ErrorAlertPanel;
 import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
+import com.SysC.signed.lecture.LectureSelectPage;
 import com.google.inject.Inject;
 
 public class SignInPage extends AbstractSignInPage {
@@ -42,7 +43,7 @@ public class SignInPage extends AbstractSignInPage {
 				val sign = signService.authenticate(getModelObject());
 				MySession.get().signIn(sign);
 				if(MySession.get().isSignedIn()){
-					System.out.println("入れた");
+					setResponsePage(LectureSelectPage.class);
 				}
 			}
 		};
