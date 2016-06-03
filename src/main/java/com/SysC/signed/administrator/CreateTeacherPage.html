@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div wicket:id="teacherWMC">
+		<form wicket:id="buttonForm" method="post">
+			<tr wicket:id="teacherListView">
+				<input type="text" wicket:id="accountName" />
+				<input type="text" wicket:id="passPhrase" />
+			</tr>
+	
+			<button type="submit" class="btn btn-primary" wicket:id="plus" value="+"/>
+    		<button type="submit" class="btn btn-danger" wicket:id="minus" value="-"/>
+	
+			<button type="submit" class="btn btn-primary" wicket:id="create" value="作成"/>
+		</form>
+	</div>
+</body>
+</html>

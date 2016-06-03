@@ -1,7 +1,5 @@
 package com.SysC.signIn;
 
-import lombok.val;
-
 import org.apache.wicket.markup.html.HTML5Attributes;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -13,11 +11,14 @@ import org.apache.wicket.validation.validator.StringValidator;
 import com.SysC.MySession;
 import com.SysC.bean.SignIn;
 import com.SysC.component.feedback.ErrorAlertPanel;
+import com.SysC.costant.ARSRoles;
 import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
 import com.SysC.signed.lecture.LectureSelectPage;
 import com.google.inject.Inject;
+
+import lombok.val;
 
 public class SignInPage extends AbstractSignInPage {
 	private static final long serialVersionUID = -4239028352453322459L;
@@ -43,7 +44,11 @@ public class SignInPage extends AbstractSignInPage {
 				val sign = signService.authenticate(getModelObject());
 				MySession.get().signIn(sign);
 				if(MySession.get().isSignedIn()){
-					setResponsePage(LectureSelectPage.class);
+					if(MySession.get().getRoles().equals(ARSRoles.ADMIN)){
+						//TODO 管理者が教員のアカウントを作成する
+					}else{
+						setResponsePage(LectureSelectPage.class);
+					}
 				}
 			}
 		};
