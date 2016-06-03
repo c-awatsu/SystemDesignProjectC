@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name="businessForm" wicket:id="businessForm">
+		<input type="text" wicket:id="businessField" />
+		<input type="submit" /> 
+	</form>
+	
+	<tr>
+		<th>用件</th>
+	</tr>
+	<tr wicket:id="businessListView">
+			<td wicket:id="business">ここに用件を表示します</td>
+			<input type="submit" wicket:id="delete" value="削除"/>
+	</tr>
+	
+	<input type="submit" wicket:id="lectureStart" value="授業を開始する"/>
+	
+	<input type="submit" wicket:id="otherLog" value="その他ログをダウンロード"/>
+	
+</body>
+</html>

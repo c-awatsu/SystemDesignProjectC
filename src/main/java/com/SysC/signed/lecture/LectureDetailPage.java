@@ -32,14 +32,14 @@ public class LectureDetailPage extends AbstractSignedPage{
 		TextField<String> title = new TextField<String>("title",new Model());
 	
 		//授業開始ボタン
-		Button lectureStartButton = new Button("lectureStartButton"){
+		Button lectureStartButton = new Button("lectureStart"){
 			@Override
 			public void onSubmit(){
 			}
 		};
 	
 		//コメントログダウンロードボタン
-		Button downloadButton = new Button("downloadButton"){
+		Button downloadButton = new Button("download"){
 			@Override
 			public void onSubmit(){
 			}
