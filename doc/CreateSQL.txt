@@ -68,7 +68,7 @@ create table business_template(
 );
 
 create table business_log(
-	business_template_id primary key REFERENCES business_template(business_template_id) on update cascade on delete cascade,
+	business_template_id integer primary key REFERENCES business_template(business_template_id) on update cascade on delete cascade,
 	lecture_datail_id integer references lecture_detail(lecture_detail_id) on update cascade on delete cascade,
 	count integer
 );

@@ -1,4 +1,4 @@
-package define;
+package com.SysC.define;
 
 import java.util.ArrayList;
 import java.util.Arrays;
