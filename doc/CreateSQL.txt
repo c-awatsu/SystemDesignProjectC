@@ -59,9 +59,8 @@ create table comment_analysis(
 	count integer not null
 );
 
-<<<<<<< HEAD
 alter table account drop constraint account_role_check;
-=======
+
 create table business_template(
 	business_template_id serial primary key,
 	lecture_id integer REFERENCES lecture(lecture_id) on update cascade on delete cascade,
@@ -80,17 +79,9 @@ create table other_log(
 	value text
 );
 
->>>>>>> 46cff6eae70d104f33807258ccc74683d5c8c9d0
-
 alter table account add check (role = 'TEACHER' or role = 'STUDENT' or role = 'TA' or role = 'ADMIN');
-
 alter table lecture drop grade;
-
 alter table lecture add grade text;
-
 alter table lecture add check(grade = '1年' or grade ='2年' or grade ='3年' or grade = '4年');
-
-
 alter table lecture alter column required type text;
-
 alter table lecture  add check(required = 'required' or required = 'selection')
