@@ -16,12 +16,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import com.SysC.bean.LectureItem;
+import com.SysC.define.DepartmentDifine.DEPARTMENT_TYPE;
+import com.SysC.define.FormatDefine.FORMAT_TYPE;
+import com.SysC.define.GradeDifine.GRADE;
+import com.SysC.define.TermDefine.TERM_TYPE;
 import com.SysC.signed.AbstractSignedPage;
-
-import define.DepartmentDifine.DEPARTMENT_TYPE;
-import define.FormatDefine.FORMAT_TYPE;
-import define.GradeDifine.GRADE;
-import define.TermDefine.TERM_TYPE;
 /**
  * 学生,教員,TAが講義を選択するページ
  */

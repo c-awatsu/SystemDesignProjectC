@@ -3,12 +3,13 @@ package com.SysC.bean;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import com.SysC.define.DepartmentDifine.DEPARTMENT_TYPE;
+import com.SysC.define.FormatDefine.FORMAT_TYPE;
+import com.SysC.define.GradeDifine.GRADE;
+import com.SysC.define.TermDefine.TERM_TYPE;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import define.DepartmentDifine.DEPARTMENT_TYPE;
-import define.FormatDefine.FORMAT_TYPE;
-import define.GradeDifine.GRADE;
-import define.TermDefine.TERM_TYPE;
 
 @Data
 @AllArgsConstructor
