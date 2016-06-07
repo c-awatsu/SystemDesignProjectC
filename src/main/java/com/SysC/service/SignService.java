@@ -11,6 +11,7 @@ import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import com.SysC.bean.Sign;
 import com.SysC.bean.SignIn;
 import com.SysC.bean.SignUp;
+import com.SysC.bean.TeacherSignUp;
 import com.SysC.dao.ISignRepository;
 import com.google.inject.Inject;
 
@@ -42,6 +43,15 @@ public class SignService implements ISignService{
 						 DigestUtils.sha256Hex(signUp.getPassphrase())
 						,signUp.getRole()
 						)==1;
+	}
+	
+	@Override
+	public boolean joinAccount(TeacherSignUp teacherSignUp){
+		return signRepository.insert
+						(teacherSignUp.getAccountName(),
+								DigestUtils.sha256Hex(teacherSignUp.getPassphrase())
+								,teacherSignUp.getRole()
+								)==1;
 	}
 
 

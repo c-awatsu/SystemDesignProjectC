@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.SysC.bean.Sign;
 import com.SysC.bean.SignIn;
 import com.SysC.bean.SignUp;
+import com.SysC.bean.TeacherSignUp;
 import com.SysC.dao.ISignRepository;
 import com.google.inject.ImplementedBy;
 
@@ -33,4 +34,11 @@ public interface ISignService {
 	 * @return {@link ISignRepository}のinsertメソッドから返ってきた値が1かどうか
 	 */
 	public boolean joinAccount(SignUp signUp);
+	
+	/**
+	 *
+	 * @param teacherSignUp アカウント登録フォームに入力された情報
+	 * @return {@link ISignRepository}のinsertメソッドから返ってきた値が1かどうか
+	 */
+	public boolean joinAccount(TeacherSignUp teacherSignUp);
 }

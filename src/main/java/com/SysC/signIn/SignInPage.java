@@ -46,7 +46,6 @@ public class SignInPage extends AbstractSignInPage {
 				MySession.get().signIn(sign);
 				if(MySession.get().isSignedIn()){
 					if(MySession.get().getRoles().toString().equals(ARSRoles.ADMIN)){
-						//TODO Role=ADMINならば教員のアカウントを作成するページに遷移
 						setResponsePage(CreateTeacherPage.class);
 					}else{
 						setResponsePage(LectureSelectPage.class);

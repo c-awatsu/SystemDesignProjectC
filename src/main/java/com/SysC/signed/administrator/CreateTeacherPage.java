@@ -11,11 +11,18 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.util.ListModel;
 
 import com.SysC.bean.SignUp;
+import com.SysC.bean.TeacherSignUp;
 import com.SysC.component.event.behavior.RefreshBehavior;
+import com.SysC.costant.ARSRoles;
+import com.SysC.service.ISignService;
 import com.SysC.signed.AbstractSignedPage;
+import com.google.inject.Inject;
 
 public class CreateTeacherPage extends AbstractSignedPage{
 	private static final long serialVersionUID = -1692569905594954552L;
+	
+	@Inject
+	private ISignService signService;
 
 	public CreateTeacherPage(){
 
@@ -30,14 +37,14 @@ public class CreateTeacherPage extends AbstractSignedPage{
 		};
 		add(teacherWMC);
 
-		ListModel<SignUp> teacherList = new ListModel<>();
-		teacherList.getObject().add(new SignUp());
+		ListModel<TeacherSignUp> teacherList = new ListModel<>();
+		teacherList.getObject().add(new TeacherSignUp());
 
-		add(new ListView<SignUp>("teacherListView",teacherList){
+		add(new ListView<TeacherSignUp>("teacherListView",teacherList){
 			private static final long serialVersionUID = 8423408044298890418L;
 
 			@Override
-			protected void populateItem(ListItem<SignUp> item){
+			protected void populateItem(ListItem<TeacherSignUp> item){
 				item.add(new Label("accountName"));
 				item.add(new Label("passPhrase"));
 
@@ -58,7 +65,12 @@ public class CreateTeacherPage extends AbstractSignedPage{
 
 			@Override
 			protected void onSubmit(){
-
+				for(int i=0; i<teacherList.getObject().size() ;i++){
+					TeacherSignUp teacher = new TeacherSignUp(teacherList.getObject().get(i).getAccountName()
+												,teacherList.getObject().get(i).getPassphrase()
+												,ARSRoles.TEACHER);
+					signService.joinAccount(teacher);
+				}
 			}
 		};
 		teacherWMC.add(teacherForm);
@@ -70,7 +82,7 @@ public class CreateTeacherPage extends AbstractSignedPage{
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
-				teacherList.getObject().add(new SignUp());
+				teacherList.getObject().add(new TeacherSignUp());
 				target.add(teacherWMC);
 				target.add(teacherForm);
 			}

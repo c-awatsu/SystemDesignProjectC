@@ -8,23 +8,20 @@ import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
-public class SignUp implements Serializable {
-	private static final long serialVersionUID = 3234100499312075256L;
+public class TeacherSignUp implements Serializable {
+	private static final long serialVersionUID = -3649806456521275659L;
 
 	@NonNull
 	private String accountName;
 
 	@NonNull
 	private String passphrase;
-	
-	@NonNull
-	private String cpassphrase;
 
 	@NonNull
 	private String role;
 
 
-	public SignUp(){
-		this("","","","");
+	public TeacherSignUp(){
+		this("","","");
 	}
 }
