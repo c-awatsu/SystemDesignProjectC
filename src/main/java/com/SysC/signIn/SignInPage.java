@@ -50,6 +50,8 @@ public class SignInPage extends AbstractSignInPage {
 					}else{
 						setResponsePage(LectureSelectPage.class);
 					}
+				}else{
+					error(SIGN_ERROR);
 				}
 			}
 		};
