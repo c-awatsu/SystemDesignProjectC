@@ -5,19 +5,31 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<div wicket:id="teacherWMC">
-		<form wicket:id="teacherForm" method="post">
-			<table>
-				<tr wicket:id="teacherListView">
-					<td><input type="text" wicket:id="accountName"/></td>
-					<td><input type="text" wicket:id="passPhrase" /></td>
-					<td><button type="submit" class="btn btn-danger" wicket:id="minus" value="-" ></button></td>
-				</tr>
-			</table>
+	<wicket:extend>
+		<div wicket:id="teacherWMC">
+			<form wicket:id="teacherForm" method="post">
+				<table>
+					<thead>
+						<tr>
+							<td>アカウント名</td>
+							<td>パスワード</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr wicket:id="teacherListView">
+							<td><input type="text" wicket:id="accountName" /></td>
+							<td><input type="text" wicket:id="passphrase" /></td>
+							<td><button type="submit" class="btn btn-danger"
+									wicket:id="minus">-</button></td>
+						</tr>
+					</tbody>
+				</table>
 
-			<button type="submit" class="btn btn-primary" wicket:id="plus" value="+" ></button>
-			<button type="submit" class="btn btn-primary" wicket:id="create"value="作成" ></button>
-		</form>
-	</div>
+				<button class="btn btn-primary" wicket:id="plus">+</button>
+				<button type="submit" class="btn btn-primary" wicket:id="create">作成</button>
+			</form>
+		</div>
+	</wicket:extend>
 </body>
 </html>

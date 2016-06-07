@@ -1,16 +1,19 @@
 package com.SysC.signed.administrator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.util.ListModel;
 
-import com.SysC.bean.SignUp;
 import com.SysC.bean.TeacherSignUp;
 import com.SysC.component.event.behavior.RefreshBehavior;
 import com.SysC.costant.ARSRoles;
@@ -27,7 +30,8 @@ public class CreateTeacherPage extends AbstractSignedPage{
 	public CreateTeacherPage(){
 
 		WebMarkupContainer teacherWMC = new WebMarkupContainer("teacherWMC"){
-			private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = -5614176894416714493L;
+
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
@@ -36,17 +40,25 @@ public class CreateTeacherPage extends AbstractSignedPage{
 			}
 		};
 		add(teacherWMC);
-
-		ListModel<TeacherSignUp> teacherList = new ListModel<>();
-		teacherList.getObject().add(new TeacherSignUp());
-
-		add(new ListView<TeacherSignUp>("teacherListView",teacherList){
+		
+		List<TeacherSignUp> teacherSignUpList = new ArrayList<>();
+		teacherSignUpList.add(new TeacherSignUp());
+		
+		ListModel<TeacherSignUp> teacherList = new ListModel<>(teacherSignUpList);
+		
+		
+		Form <List<TeacherSignUp>> teacherForm = new Form <List<TeacherSignUp>>("teacherForm",teacherList);
+	
+		teacherWMC.add(teacherForm);
+		
+		teacherForm.add(new ListView<TeacherSignUp>("teacherListView",teacherList){
 			private static final long serialVersionUID = 8423408044298890418L;
 
 			@Override
 			protected void populateItem(ListItem<TeacherSignUp> item){
-				item.add(new Label("accountName"));
-				item.add(new Label("passPhrase"));
+				item.setDefaultModel(new CompoundPropertyModel<>(item.getModel()));
+				item.add(new TextField<>("accountName"));
+				item.add(new TextField<>("passphrase"));
 
 				item.add(new AjaxButton("minus"){
 					private static final long serialVersionUID = 1183318898924242465L;
@@ -55,25 +67,13 @@ public class CreateTeacherPage extends AbstractSignedPage{
 							Form<?> form) {
 						super.onSubmit(target, form);
 						teacherList.getObject().remove(item.getIndex());
+						teacherList.detach();
+						target.add(teacherWMC);
 					}
 				});
 			}
 		});
 
-		Form<SignUp> teacherForm = new Form<SignUp>("teacherForm"){
-			private static final long serialVersionUID = -9021346977693489194L;
-
-			@Override
-			protected void onSubmit(){
-				for(int i=0; i<teacherList.getObject().size() ;i++){
-					TeacherSignUp teacher = new TeacherSignUp(teacherList.getObject().get(i).getAccountName()
-												,teacherList.getObject().get(i).getPassphrase()
-												,ARSRoles.TEACHER);
-					signService.joinAccount(teacher);
-				}
-			}
-		};
-		teacherWMC.add(teacherForm);
 
 		//プラスボタン
 		AjaxButton plus = new AjaxButton("plus"){
@@ -84,7 +84,6 @@ public class CreateTeacherPage extends AbstractSignedPage{
 				super.onSubmit(target, form);
 				teacherList.getObject().add(new TeacherSignUp());
 				target.add(teacherWMC);
-				target.add(teacherForm);
 			}
 		};
 
@@ -96,6 +95,12 @@ public class CreateTeacherPage extends AbstractSignedPage{
 
 			@Override
 			public void onSubmit(){
+				for(int i=0; i<teacherList.getObject().size() ;i++){
+					TeacherSignUp teacher = new TeacherSignUp(teacherList.getObject().get(i).getAccountName()
+															 ,teacherList.getObject().get(i).getPassphrase()
+															 ,ARSRoles.TEACHER);
+					signService.joinAccount(teacher);
+				}
 			}
 		};
 		teacherForm.add(create);

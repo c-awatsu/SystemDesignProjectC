@@ -11,10 +11,10 @@ import lombok.NonNull;
 public class TeacherSignUp implements Serializable {
 	private static final long serialVersionUID = -3649806456521275659L;
 
-	@NonNull
+	
 	private String accountName;
 
-	@NonNull
+	
 	private String passphrase;
 
 	@NonNull
