@@ -6,16 +6,17 @@
 </head>
 <body>
 	<div wicket:id="teacherWMC">
-		<form wicket:id="buttonForm" method="post">
-			<tr wicket:id="teacherListView">
-				<input type="text" wicket:id="accountName" />
-				<input type="text" wicket:id="passPhrase" />
-			</tr>
-	
-			<button type="submit" class="btn btn-primary" wicket:id="plus" value="+"/>
-    		<button type="submit" class="btn btn-danger" wicket:id="minus" value="-"/>
-	
-			<button type="submit" class="btn btn-primary" wicket:id="create" value="作成"/>
+		<form wicket:id="teacherForm" method="post">
+			<table>
+				<tr wicket:id="teacherListView">
+					<td><input type="text" wicket:id="accountName"/></td>
+					<td><input type="text" wicket:id="passPhrase" /></td>
+					<td><button type="submit" class="btn btn-danger" wicket:id="minus" value="-" ></button></td>
+				</tr>
+			</table>
+
+			<button type="submit" class="btn btn-primary" wicket:id="plus" value="+" ></button>
+			<button type="submit" class="btn btn-primary" wicket:id="create"value="作成" ></button>
 		</form>
 	</div>
 </body>

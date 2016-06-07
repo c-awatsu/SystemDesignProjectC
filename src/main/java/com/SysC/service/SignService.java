@@ -26,6 +26,7 @@ public class SignService implements ISignService{
 													  DigestUtils.sha256Hex(authentication.getPassphrase()));
 		String role = signRepository.fetchARSRole(accountId);
 		sign = new Sign(accountId,authentication.getAccountName(),new Roles(role));
+
 		return ofNullable(sign);
 	}
 
