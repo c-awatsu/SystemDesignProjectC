@@ -32,10 +32,10 @@ public class FormatDefine {
 		public static List<FORMAT_TYPE> getList(){
 			List<FORMAT_TYPE> formatList = new ArrayList<>();
 			Arrays.asList(FORMAT_TYPE.values()).stream()
-				.filter(format->!format.equals(UNKNOWN))
-				.forEach(format -> {
-					formatList.add(format);
-				});
+			.filter(format->!format.equals(UNKNOWN))
+			.forEach(format -> {
+				formatList.add(format);
+			});
 			return formatList;
 		}
 

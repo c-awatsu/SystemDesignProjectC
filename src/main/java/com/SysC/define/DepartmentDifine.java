@@ -33,10 +33,10 @@ public class DepartmentDifine {
 		public static List<DEPARTMENT_TYPE> getList(){
 			List<DEPARTMENT_TYPE> formatList = new ArrayList<>();
 			Arrays.asList(DEPARTMENT_TYPE.values()).stream()
-				.filter(format->!format.equals(UNKNOWN))
-				.forEach(format -> {
-					formatList.add(format);
-				});
+			.filter(format->!format.equals(UNKNOWN))
+			.forEach(format -> {
+				formatList.add(format);
+			});
 			return formatList;
 		}
 

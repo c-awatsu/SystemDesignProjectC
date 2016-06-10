@@ -33,10 +33,10 @@ public class GradeDifine {
 		public static List<GRADE> getList(){
 			List<GRADE> formatList = new ArrayList<>();
 			Arrays.stream(GRADE.values())
-				.filter(format->!format.equals(UNKNOWN))
-				.forEach(format -> {
-					formatList.add(format);
-				});
+			.filter(format->!format.equals(UNKNOWN))
+			.forEach(format -> {
+				formatList.add(format);
+			});
 			return formatList;
 		}
 

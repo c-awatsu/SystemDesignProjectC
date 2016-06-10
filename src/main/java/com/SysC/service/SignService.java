@@ -24,7 +24,7 @@ public class SignService implements ISignService{
 	public Optional<Sign> authenticate(SignIn authentication) {
 		Sign sign = null;
 		int accountId = signRepository.fetchAccountId(authentication.getAccountName(),
-													  DigestUtils.sha256Hex(authentication.getPassphrase()));
+				DigestUtils.sha256Hex(authentication.getPassphrase()));
 		String role = signRepository.fetchARSRole(accountId);
 		if(accountId != 0){
 			sign = new Sign(accountId,authentication.getAccountName(),new Roles(role));
@@ -34,25 +34,25 @@ public class SignService implements ISignService{
 
 	@Override
 	public List<Integer> existUser() {
- 		return signRepository.fetchAccountId();
+		return signRepository.fetchAccountId();
 	}
 
 	@Override
 	public boolean joinAccount(SignUp signUp) {
 		return	signRepository.insert
-						(signUp.getAccountName(),
-						 DigestUtils.sha256Hex(signUp.getPassphrase())
+				(signUp.getAccountName(),
+						DigestUtils.sha256Hex(signUp.getPassphrase())
 						,signUp.getRole()
 						)==1;
 	}
-	
+
 	@Override
 	public boolean joinAccount(TeacherSignUp teacherSignUp){
 		return signRepository.insert
-						(teacherSignUp.getAccountName(),
-								DigestUtils.sha256Hex(teacherSignUp.getPassphrase())
-								,teacherSignUp.getRole()
-								)==1;
+				(teacherSignUp.getAccountName(),
+						DigestUtils.sha256Hex(teacherSignUp.getPassphrase())
+						,teacherSignUp.getRole()
+						)==1;
 	}
 
 

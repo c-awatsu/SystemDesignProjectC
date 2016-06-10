@@ -34,7 +34,7 @@ public interface ISignService {
 	 * @return {@link ISignRepository}のinsertメソッドから返ってきた値が1かどうか
 	 */
 	public boolean joinAccount(SignUp signUp);
-	
+
 	/**
 	 *
 	 * @param teacherSignUp アカウント登録フォームに入力された情報
