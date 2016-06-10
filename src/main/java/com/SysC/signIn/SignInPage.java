@@ -17,7 +17,7 @@ import com.SysC.costant.ARSRoles;
 import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
-import com.SysC.signed.administrator.CreateTeacherPage;
+import com.SysC.signed.administrator.AdministratorTopPage;
 import com.SysC.signed.lecture.LectureSelectPage;
 import com.google.inject.Inject;
 
@@ -46,7 +46,7 @@ public class SignInPage extends AbstractSignInPage {
 				MySession.get().signIn(sign);
 				if(MySession.get().isSignedIn()){
 					if(MySession.get().getRoles().toString().equals(ARSRoles.ADMIN)){
-						setResponsePage(CreateTeacherPage.class);
+						setResponsePage(AdministratorTopPage.class);
 					}else{
 						setResponsePage(LectureSelectPage.class);
 					}
