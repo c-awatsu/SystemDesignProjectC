@@ -9,12 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.SysC.JDBCUtill;
+import com.SysC.bean.LectureItem;
+import com.SysC.define.GradeDifine.GRADE;
 
-/**
- * {@link ISignRepository}の実装クラス
- * @author 永田
- *
- */
 public class SignRepository implements ISignRepository{
 
 
@@ -104,8 +101,26 @@ public class SignRepository implements ISignRepository{
 		return role;
 
 	}
-
-
+	
+	@Override 
+	public int insert(LectureItem lectureItem){
+		int result = 0;
+		String sql = "insert into lecture(lecture_name,department,required,grade) values(?,?,?,?)";
+		try(Connection conn = JDBCUtill.getConnection()){
+			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+				pstmt.setString(1, lectureName.getLectureName());
+				pstmt.setString(2, lectureItem.getDepartment().getLabel());
+				pstmt.setString(3, lectureItem.getFormat().getLabel());
+				pstmt.setString(4, lectureItem.getGrade().getLabel());
+				result = pstmt.executeUpdate();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 
 

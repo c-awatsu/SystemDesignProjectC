@@ -2,6 +2,7 @@ package com.SysC.dao;
 
 import java.util.List;
 
+import com.SysC.bean.LectureItem;
 import com.google.inject.ImplementedBy;
 /**
  *
@@ -37,5 +38,8 @@ public interface ISignRepository {
 	 * @return 検索されたシステム上の権限
 	 */
 	public String fetchARSRole(int accountId);
+	
+	//
+	public int insert(LectureItem lectureItem);
 
 }

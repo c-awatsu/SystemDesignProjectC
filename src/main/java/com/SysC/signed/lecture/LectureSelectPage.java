@@ -95,8 +95,7 @@ public class LectureSelectPage extends AbstractSignedPage{
 			}
 		};
 
-
-
+		//春or秋
 		DropDownChoice<TERM_TYPE> term = new DropDownChoice<TERM_TYPE>(
 				"term",TERM_TYPE.getList(),termCR);
 		form.add(term);

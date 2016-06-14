@@ -17,15 +17,22 @@ public class LectureItem implements Serializable{
 	private static final long serialVersionUID = -98452019493104553L;
 
 	private long lectureId;
+	private String lectureName;
 	private GRADE grade;
 	private DEPARTMENT_TYPE department;
 	private FORMAT_TYPE format;
 	private TERM_TYPE term;
 
 	public LectureItem(){
-		this(-1,GRADE.UNKNOWN,DEPARTMENT_TYPE.UNKNOWN,FORMAT_TYPE.UNKNOWN,TERM_TYPE.UNKNOWN);
+		this(-1,"",GRADE.UNKNOWN,DEPARTMENT_TYPE.UNKNOWN,FORMAT_TYPE.UNKNOWN,TERM_TYPE.UNKNOWN);
 	}
 
+	
+	public void setLectureName(String lectureName){
+		this.lectureName = lectureName;
+	}
+	
+	
 	/**
 	 * DBなどからgradeを取得した際にStringをGRADEに変換してsetする
 	 * @param grade 1年,2年のような形式
