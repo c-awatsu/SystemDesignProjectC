@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
@@ -61,7 +62,14 @@ public class CreateLecturePage extends AbstractSignedPage{
 		ListModel<LectureItem> lectureList = new ListModel<>(lectureCreateList);
 		
 		
-		Form <List<LectureItem>> lectureForm = new Form <List<LectureItem>>("lectureForm",lectureList);
+		Form <List<LectureItem>> lectureForm = new Form <List<LectureItem>>
+		("lectureForm",new CompoundPropertyModel<List<LectureItem>>(lectureList){
+			private static final long serialVersionUID = 2470853481967896784L;
+			
+			
+		});
+		
+		
 	
 		lectureWMC.add(lectureForm);
 		
@@ -158,24 +166,7 @@ public class CreateLecturePage extends AbstractSignedPage{
 		};
 
 		lectureForm.add(plus);
-
-		//作成ボタン
-		Button create = new Button("create"){
-			private static final long serialVersionUID = 3711053326221675338L;
-
-			@Override
-			public void onSubmit(){
-				for(int i=0; i<lectureList.getObject().size() ;i++){
-					LectureItem lecture = new LectureItem(lectureList.getObject().get(i).getLectureName()
-															 ,lectureList.getObject().get(i).getDepartment()
-															 ,lectureList.getObject().get(i).getFormat()
-															 ,lectureList.getObject().get(i).getGrade()
-															 ,lectureList.getObject().get(i).getTerm());
-					signService.createLecture(lecture);
-				}
-			}
-		};
-		lectureForm.add(create);
+					
 	}
 }
 

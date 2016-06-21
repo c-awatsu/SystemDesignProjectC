@@ -108,7 +108,7 @@ public class SignRepository implements ISignRepository{
 		String sql = "insert into lecture(lecture_name,department,required,grade) values(?,?,?,?)";
 		try(Connection conn = JDBCUtill.getConnection()){
 			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
-				pstmt.setString(1, lectureName.getLectureName());
+				pstmt.setString(1, lectureItem.getLectureName());
 				pstmt.setString(2, lectureItem.getDepartment().getLabel());
 				pstmt.setString(3, lectureItem.getFormat().getLabel());
 				pstmt.setString(4, lectureItem.getGrade().getLabel());
