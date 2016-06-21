@@ -11,38 +11,40 @@
 				<table>
 					<thead>
 						<tr>
-							<td>アカウント名</td>
-							<td>パスワード</td>
+							<td>講義名</td>
 							<td></td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr wicket:id="lectureListView">
 							<td><input type="text" wicket:id="lectureName" /></td>
-							
+							<td>
 							<select wicket:id="grade">
 								<option value="grade1">1年生</option>
 								<option value="grade2">2年生</option>
 								<option value="grade3">3年生</option>
 								<option value="grade4">4年生</option>
 							</select>
-				
+							</td>
+							<td>
 							<select wicket:id="department">
 								<option value="bioMaterial">バイオマテリアル学科</option>
 								<option value="optoElectoronic">光システム学科</option>
 								<option value="gsd">グローバルシステムデザイン学科</option>
 							</select>
-				
+							</td>
+							<td>
 							<select wicket:id="format">
 								<option value="required">必修</option>
 								<option value="selection">選択</option>
 							</select>
-				
+							</td>
+							<td>
 							<select wicket:id="term">
 								<option value="spring">春学期</option>
 								<option value="fall">秋学期</option>
 							</select>
-							
+							</td>
 							<td><button type="submit" class="btn btn-danger"
 									wicket:id="minus">-</button></td>
 						</tr>
@@ -50,7 +52,7 @@
 				</table>
 
 				<button class="btn btn-primary" wicket:id="plus">+</button>
-				<input type="submit" class="btn btn-primary" />作成
+				<input value="作成" type="submit" class="btn btn-primary" />
 			</form>
 		</div>
 	</wicket:extend>

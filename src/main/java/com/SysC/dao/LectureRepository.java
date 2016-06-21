@@ -8,10 +8,10 @@ import com.SysC.JDBCUtill;
 
 public class LectureRepository implements ILectureRepository{
 
-	@Override 
+	@Override
 	public int insert(String lectureName,String grade,String department,String format,String term){
 		int result = 0;
-		String sql = "insert into lecture(lecture_name,department,required,grade) values(?,?,?,?)";
+		String sql = "insert into lecture(lecture_name,department,required,grade,term) values(?,?,?,?,?)";
 		try(Connection conn = JDBCUtill.getConnection()){
 			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
 				pstmt.setString(1, lectureName);
