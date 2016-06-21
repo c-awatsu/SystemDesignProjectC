@@ -39,7 +39,6 @@ public interface ISignRepository {
 	 */
 	public String fetchARSRole(int accountId);
 	
-	//
-	public int insert(LectureItem lectureItem);
+
 
 }

@@ -10,6 +10,7 @@ public class AdministratorTopPage extends AbstractSignedPage{
 	public AdministratorTopPage(){
 		
 		Link<Void> toCreateTeacherPage = new Link<Void>("toCreateTeacher"){
+			private static final long serialVersionUID = 6204008734617010616L;
 
 			@Override
 			public void onClick(){
@@ -20,10 +21,11 @@ public class AdministratorTopPage extends AbstractSignedPage{
 		add(toCreateTeacherPage);
 		
 		Link<Void> toCreateLecturePage = new Link<Void>("toCreateLecture"){
+			private static final long serialVersionUID = 4836303957745485390L;
 
 			@Override
 			public void onClick(){
-				setResponsePage(new CreateTeacherPage());
+				setResponsePage(new CreateLecturePage());
 			}
 		};
 		

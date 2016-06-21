@@ -57,14 +57,7 @@ public class SignService implements ISignService{
 	}
 	
 	
-	public boolean createLecture(LectureItem lectureItem){
-		return signRepository.insert
-				( lectureItem.getDepartment().getLabel(),
-						lectureItem.getFormat().getLabel(),
-						lectureItem.getGrade().getLabel()
-				)==1;		
-				
-	}
+	
 
 
 }

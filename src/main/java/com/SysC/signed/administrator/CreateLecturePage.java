@@ -1,14 +1,11 @@
 package com.SysC.signed.administrator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -17,22 +14,15 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
 
 import com.SysC.bean.LectureItem;
-import com.SysC.bean.TeacherSignUp;
 import com.SysC.component.event.behavior.RefreshBehavior;
-import com.SysC.costant.ARSRoles;
-import com.SysC.define.DepartmentDifine;
-import com.SysC.define.FormatDefine;
-import com.SysC.define.GradeDifine;
-import com.SysC.define.TermDefine;
 import com.SysC.define.DepartmentDifine.DEPARTMENT_TYPE;
 import com.SysC.define.FormatDefine.FORMAT_TYPE;
 import com.SysC.define.GradeDifine.GRADE;
 import com.SysC.define.TermDefine.TERM_TYPE;
-import com.SysC.service.ISignService;
+import com.SysC.service.ILectureService;
 import com.SysC.signed.AbstractSignedPage;
 import com.google.inject.Inject;
 
@@ -40,7 +30,7 @@ public class CreateLecturePage extends AbstractSignedPage{
 	private static final long serialVersionUID = 5962500762837311819L;
 
 	@Inject
-	private ISignService signService;
+	private ILectureService lectureService;
 
 	public CreateLecturePage(){
 
@@ -60,15 +50,17 @@ public class CreateLecturePage extends AbstractSignedPage{
 		lectureCreateList.add(new LectureItem());
 		
 		ListModel<LectureItem> lectureList = new ListModel<>(lectureCreateList);
-		
-		
-		Form <List<LectureItem>> lectureForm = new Form <List<LectureItem>>
-		("lectureForm",new CompoundPropertyModel<List<LectureItem>>(lectureList){
-			private static final long serialVersionUID = 2470853481967896784L;
-			
-			
-		});
-		
+	
+		Form<List<LectureItem>> lectureForm = new Form<List<LectureItem>>(
+				"lectureForm",new CompoundPropertyModel<>(lectureList)){
+					private static final long serialVersionUID = 8473436386740516551L;
+
+			@Override
+			protected void onSubmit() {
+				super.onSubmit();
+				getModelObject().stream().forEach(l -> lectureService.createLecture(l));
+			}
+		};
 		
 	
 		lectureWMC.add(lectureForm);

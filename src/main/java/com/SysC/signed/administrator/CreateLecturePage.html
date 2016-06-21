@@ -6,8 +6,8 @@
 </head>
 <body>
 	<wicket:extend>
-		<div wicket:id="teacherWMC">
-			<form wicket:id="teacherForm" method="post">
+		<div wicket:id="lectureWMC">
+			<form wicket:id="lectureForm" method="post">
 				<table>
 					<thead>
 						<tr>
@@ -17,9 +17,32 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr wicket:id="teacherListView">
-							<td><input type="text" wicket:id="accountName" /></td>
-							<td><input type="text" wicket:id="passphrase" /></td>
+						<tr wicket:id="lectureListView">
+							<td><input type="text" wicket:id="lectureName" /></td>
+							
+							<select wicket:id="grade">
+								<option value="grade1">1年生</option>
+								<option value="grade2">2年生</option>
+								<option value="grade3">3年生</option>
+								<option value="grade4">4年生</option>
+							</select>
+				
+							<select wicket:id="department">
+								<option value="bioMaterial">バイオマテリアル学科</option>
+								<option value="optoElectoronic">光システム学科</option>
+								<option value="gsd">グローバルシステムデザイン学科</option>
+							</select>
+				
+							<select wicket:id="format">
+								<option value="required">必修</option>
+								<option value="selection">選択</option>
+							</select>
+				
+							<select wicket:id="term">
+								<option value="spring">春学期</option>
+								<option value="fall">秋学期</option>
+							</select>
+							
 							<td><button type="submit" class="btn btn-danger"
 									wicket:id="minus">-</button></td>
 						</tr>
