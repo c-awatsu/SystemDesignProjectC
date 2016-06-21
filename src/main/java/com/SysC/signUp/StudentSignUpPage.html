@@ -8,7 +8,7 @@
 	<wicket:extend>
 		<div wicket:id="feedback"></div>
 		<div align="center">
-			<label>ログインページ</label>
+			<label>学生アカウント作成ページ</label>
 		</div>
 		<form class="form-horizontal" wicket:id="form">
 			<fieldset>
@@ -25,18 +25,22 @@
 						<input class="form-control" type="password" wicket:id="passphrase" />
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label">再確認</label>
+					<div class="col-sm-6">
+						<input class="form-control" type="password"
+							wicket:id="cpassphrase" />
+					</div>
+				</div>
+
 				<div class="form-group">
 					<div style="text-align: center;">
-						<button type="submit" class="btn btn-primary">ログイン</button>
+						<button type="submit" class="btn btn-primary">登録</button>
 					</div>
 				</div>
 			</fieldset>
 		</form>
-		<dl>
-			<dd>
-				<a wicket:id="toStudentSignUpPage">学生アカウント作成画面へ</a>
-			</dd>
-		</dl>
 	</wicket:extend>
 </body>
 </html>

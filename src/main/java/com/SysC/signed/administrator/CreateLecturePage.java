@@ -158,6 +158,8 @@ public class CreateLecturePage extends AbstractSignedPage{
 		};
 
 		lectureForm.add(plus);
+		
+		
 
 	}
 }

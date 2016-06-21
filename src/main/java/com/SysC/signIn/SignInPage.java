@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.HTML5Attributes;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
@@ -17,7 +18,9 @@ import com.SysC.costant.ARSRoles;
 import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
+import com.SysC.signUp.StudentSignUpPage;
 import com.SysC.signed.administrator.AdministratorTopPage;
+import com.SysC.signed.administrator.CreateLecturePage;
 import com.SysC.signed.lecture.LectureSelectPage;
 import com.google.inject.Inject;
 
@@ -84,5 +87,17 @@ public class SignInPage extends AbstractSignInPage {
 
 		add(form);
 
+		Link<Void> toStudentSignUpPage = new Link<Void>("toStudentSignUpPage"){
+			private static final long serialVersionUID = 8048762509177015507L;
+
+			@Override
+			public void onClick(){
+				setResponsePage(new StudentSignUpPage());
+			}
+		};
+
+		add(toStudentSignUpPage);
 	}
+
 }
+
