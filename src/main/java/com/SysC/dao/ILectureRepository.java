@@ -15,5 +15,7 @@ public interface ILectureRepository {
 	 * @return insertできたレコードの行数 
 	 */
 	public int insert(String lectureName,String grade,String department,String format,String term);
+	
+	public void dataAcsess();
 
 }
