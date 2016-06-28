@@ -14,13 +14,19 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import com.SysC.MySession;
 import com.SysC.bean.LectureItem;
+import com.SysC.costant.ARSRoles;
 import com.SysC.define.DepartmentDifine.DEPARTMENT_TYPE;
 import com.SysC.define.FormatDefine.FORMAT_TYPE;
 import com.SysC.define.GradeDifine.GRADE;
 import com.SysC.define.TermDefine.TERM_TYPE;
 import com.SysC.service.ILectureService;
 import com.SysC.signed.AbstractSignedPage;
+import com.SysC.signed.administrator.AdministratorTopPage;
+import com.SysC.signed.questionnaire.CollectionQuestionairePage;
+import com.SysC.signed.questionnaire.QuestionairePage;
+import com.SysC.signed.questionnaire.WatingQuestionPage;
 import com.google.inject.Inject;
 /**
  * 学生,教員,TAが講義を選択するページ
@@ -107,7 +113,7 @@ public class LectureSelectPage extends AbstractSignedPage{
 		//授業選択リストの作成
 		List<LectureItem> lectureList = lectureService.selectLectureItems();
 
-		add(new ListView<LectureItem>("lectureListView",new CompoundPropertyModel<>(lectureList)){
+		add(new ListView<LectureItem>("lectureListView",lectureList){
 			private static final long serialVersionUID = 1852295738588562550L;
 
 			@Override
@@ -117,13 +123,21 @@ public class LectureSelectPage extends AbstractSignedPage{
 
 					@Override
 					public void onClick() {
-						// TODO 自動生成されたメソッド・スタブ
-
+						if(MySession.get().getRoles().toString().equals(ARSRoles.STUDENT)){
+							setResponsePage(QuestionairePage.class);
+						}
+						else if(MySession.get().getRoles().toString().equals(ARSRoles.TEACHER)){
+							setResponsePage(CollectionQuestionairePage.class);
+						}
+						else if(MySession.get().getRoles().toString().equals(ARSRoles.TA)){
+							setResponsePage(WatingQuestionPage.class);
+						}
 					}
 
 				};
 
-				toQuestionnairePage.add(new Label("lectureName"));
+				toQuestionnairePage.add(new Label("lectureName",
+						lectureList.get(item.getIndex()).getLectureName()));
 				item.add(toQuestionnairePage);
 
 			}

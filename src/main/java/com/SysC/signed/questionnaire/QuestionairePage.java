@@ -19,18 +19,11 @@ public class QuestionairePage extends AbstractSignedPage{
 	private static final long serialVersionUID = -5543542778506984465L;
 
 	private static final String COMMENT_LABEL = "質問を入力してください(100文字以内)";
+	private static final String OTHER_LABEL = "用件を入力してください)";
+	private static final String POSITION_LABEL = "座席番号を入力してください)";
 
 	public QuestionairePage(){
-
-		//理解したボタン
-		Button okButton = new Button("ok"){
-			private static final long serialVersionUID = -3692659795986503461L;
-
-			@Override
-			public void onSubmit(){
-			}
-		};
-
+		
 		//分らないボタン
 		Button noButton = new Button("no"){
 			private static final long serialVersionUID = 3023236851412116461L;
@@ -39,6 +32,8 @@ public class QuestionairePage extends AbstractSignedPage{
 			public void onSubmit(){
 			}
 		};
+		
+		add(noButton);
 
 		//質問を入力する
 		TextField<String> questionField = new TextField<String>("questionField"){
@@ -69,7 +64,6 @@ public class QuestionairePage extends AbstractSignedPage{
 
 		DropDownChoice<String> business = new DropDownChoice<String>(
 				"business",new Model<String>(),businessList);
-		add(business);
 
 		//その他の用件を入力する
 		TextField<String> otherField = new TextField<String>("otherField"){
@@ -77,6 +71,8 @@ public class QuestionairePage extends AbstractSignedPage{
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
+				setLabel(Model.of(OTHER_LABEL));
+				add(new HTML5Attributes());
 			}
 		};
 
@@ -86,6 +82,8 @@ public class QuestionairePage extends AbstractSignedPage{
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
+				setLabel(Model.of(POSITION_LABEL));
+				add(new HTML5Attributes());
 			}
 		};
 
@@ -98,7 +96,10 @@ public class QuestionairePage extends AbstractSignedPage{
 			}
 		};
 
-		submitForm1.setVersioned(true);
+		submitForm2.setVersioned(true);
 		add(submitForm2);
+		submitForm2.add(business);
+		submitForm2.add(otherField);
+		submitForm2.add(positionField);
 	}
 }
