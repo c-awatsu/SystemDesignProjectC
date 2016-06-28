@@ -7,42 +7,34 @@
 <body>
 	<wicket:extend>
 		<div align="center">
-		<form wicket:id=form class = "form-inline">
+			<form wicket:id=form class="form-inline">
 
-			<select wicket:id="grade">
-				<option value="grade1">1年生</option>
-				<option value="grade2">2年生</option>
-				<option value="grade3">3年生</option>
-				<option value="grade4">4年生</option>
-			</select>
-
-			<select wicket:id="department">
-				<option value="bioMaterial">バイオマテリアル学科</option>
-				<option value="optoElectoronic">光システム学科</option>
-				<option value="gsd">グローバルシステムデザイン学科</option>
-			</select>
-
-			<select wicket:id="format">
-				<option value="required">必修</option>
-				<option value="selection">選択</option>
-			</select>
-
-			<select wicket:id="term">
-				<option value="spring">春学期</option>
-				<option value="fall">秋学期</option>
-			</select>
-
-
-			<input type="submit" class="btn btn-secondary" value="絞り込み"/>
-		</form>
+				<select wicket:id="grade">
+					<option value="grade1">1年生</option>
+					<option value="grade2">2年生</option>
+					<option value="grade3">3年生</option>
+					<option value="grade4">4年生</option>
+				</select> <select wicket:id="department">
+					<option value="bioMaterial">バイオマテリアル学科</option>
+					<option value="optoElectoronic">光システム学科</option>
+					<option value="gsd">グローバルシステムデザイン学科</option>
+				</select> <select wicket:id="format">
+					<option value="required">必修</option>
+					<option value="selection">選択</option>
+				</select> <select wicket:id="term">
+					<option value="spring">春学期</option>
+					<option value="fall">秋学期</option>
+				</select> <input type="submit" class="btn btn-secondary" value="絞り込み" />
+			</form>
 		</div>
-		
+
 		<div align="center">
-		<table>
-			<tr wicket:id="lectureListView">
-				<td wicket:id="lectureName">C言語</td>
-			</tr>
-		</table>
+			<table>
+				<tr wicket:id="lectureListView">
+					<td><a href=# wicket:id="toQuestionnairePage"> <span
+							wicket:id="lectureName">lectureName</span></a></td>
+				</tr>
+			</table>
 		</div>
 	</wicket:extend>
 </body>

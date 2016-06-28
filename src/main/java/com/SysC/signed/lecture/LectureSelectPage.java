@@ -15,13 +15,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import com.SysC.bean.LectureItem;
-import com.SysC.dao.ILectureRepository;
 import com.SysC.define.DepartmentDifine.DEPARTMENT_TYPE;
 import com.SysC.define.FormatDefine.FORMAT_TYPE;
 import com.SysC.define.GradeDifine.GRADE;
 import com.SysC.define.TermDefine.TERM_TYPE;
 import com.SysC.service.ILectureService;
-import com.SysC.service.LectureService;
 import com.SysC.signed.AbstractSignedPage;
 import com.google.inject.Inject;
 /**
@@ -32,7 +30,7 @@ public class LectureSelectPage extends AbstractSignedPage{
 
 	@Inject
 	private ILectureService lectureService;
-	
+
 	public LectureSelectPage(){
 
 		IModel<LectureItem> lectureItem = new Model<>(new LectureItem());
@@ -106,25 +104,28 @@ public class LectureSelectPage extends AbstractSignedPage{
 				"term",TERM_TYPE.getList(),termCR);
 		form.add(term);
 
-		//授業選択リストの作成		
+		//授業選択リストの作成
 		List<LectureItem> lectureList = lectureService.selectLectureItems();
-		
+
 		add(new ListView<LectureItem>("lectureListView",new CompoundPropertyModel<>(lectureList)){
 			private static final long serialVersionUID = 1852295738588562550L;
 
 			@Override
 			protected void populateItem(ListItem<LectureItem> item){
-				item.add(new Link<LectureItem>("lectureName"){
-					private static final long serialVersionUID = -4834242517265298143L;
+				Link<Void> toQuestionnairePage = new Link<Void>("toQuestionnairePage") {
+					private static final long serialVersionUID = -3410939491013554645L;
 
 					@Override
 					public void onClick() {
-						// TODO Role=TEACHERなら講義詳細設定ページに遷移
-						// TODO Role=STUDENTならアンケートページに遷移
-						// TODO Role=TAならTA待機画面に移動
+						// TODO 自動生成されたメソッド・スタブ
+
 					}
 
-				});
+				};
+
+				toQuestionnairePage.add(new Label("lectureName"));
+				item.add(toQuestionnairePage);
+
 			}
 		});
 	}

@@ -33,7 +33,7 @@ public class LectureRepository implements ILectureRepository{
 		}
 		return result;
 	}
-	
+
 	//lectureテーブルのデータベースにアクセスして値を取り出す
 	@Override
 	public List<LectureItem> selectLectureItem(){
@@ -49,8 +49,9 @@ public class LectureRepository implements ILectureRepository{
 						item.setFormat(result.getString(3));
 						item.setGrade(result.getString(4));
 						item.setTerm(result.getString(5));
-						
+						System.out.println(item);
 						lectureItems.add(item);
+						System.out.println(lectureItems);
 				}
 			}
 		}catch(SQLException e){
@@ -58,7 +59,7 @@ public class LectureRepository implements ILectureRepository{
 		}catch(NullPointerException e){
 			e.printStackTrace();
 		}
-		
+		System.out.println(lectureItems);
 		return lectureItems;
 	}
 }
