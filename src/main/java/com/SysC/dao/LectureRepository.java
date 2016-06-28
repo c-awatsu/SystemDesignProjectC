@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.SysC.JDBCUtill;
+import com.SysC.bean.LectureItem;
 
 public class LectureRepository implements ILectureRepository{
 
@@ -33,17 +36,21 @@ public class LectureRepository implements ILectureRepository{
 	
 	//lectureテーブルのデータベースにアクセスして値を取り出す
 	@Override
-	public void dataAcsess(){
-		String sql = "select lecture lecture_name,department,required,grade,term from lecture";
+	public List<LectureItem> selectLectureItem(){
+		List<LectureItem> lectureItems = new ArrayList<>();
+		String sql = "select lecture_name,department,required,grade,term from lecture";
 		try(Connection conn = JDBCUtill.getConnection()){
 			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
 				ResultSet result = pstmt.executeQuery();
 				while(result.next()){
-					pstmt.setString(result.getString(1));
-					pstmt.setString(result.getString(1));
-					pstmt.setString(result.getString(1));
-					pstmt.setString(result.getString(1));
-					pstmt.setString(result.getString(1));
+						LectureItem item = new LectureItem();
+						item.setLectureName(result.getString(1));
+						item.setDepartment(result.getString(2));
+						item.setFormat(result.getString(3));
+						item.setGrade(result.getString(4));
+						item.setTerm(result.getString(5));
+						
+						lectureItems.add(item);
 				}
 			}
 		}catch(SQLException e){
@@ -51,5 +58,7 @@ public class LectureRepository implements ILectureRepository{
 		}catch(NullPointerException e){
 			e.printStackTrace();
 		}
+		
+		return lectureItems;
 	}
 }

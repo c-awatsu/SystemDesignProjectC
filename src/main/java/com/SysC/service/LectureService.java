@@ -1,5 +1,7 @@
 package com.SysC.service;
 
+import java.util.List;
+
 import com.SysC.bean.LectureItem;
 import com.SysC.dao.ILectureRepository;
 import com.google.inject.Inject;
@@ -19,6 +21,11 @@ public class LectureService implements ILectureService{
 						lectureItem.getTerm().getLabel()
 				)==1;		
 				
+	}
+	
+	@Override
+	public List<LectureItem> selectLectureItems(){
+		return lectureRepository.selectLectureItem();
 	}
 	
 	

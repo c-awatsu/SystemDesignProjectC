@@ -1,5 +1,7 @@
 package com.SysC.service;
 
+import java.util.List;
+
 import com.SysC.bean.LectureItem;
 import com.google.inject.ImplementedBy;
 
@@ -7,4 +9,6 @@ import com.google.inject.ImplementedBy;
 public interface ILectureService {
 
 	public boolean createLecture(LectureItem lectureItem);
+	
+	public List<LectureItem> selectLectureItems();
 }

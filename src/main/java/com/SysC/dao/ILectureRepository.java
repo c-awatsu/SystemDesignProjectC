@@ -1,5 +1,8 @@
 package com.SysC.dao;
 
+import java.util.List;
+
+import com.SysC.bean.LectureItem;
 import com.google.inject.ImplementedBy;
 
 @ImplementedBy(LectureRepository.class)
@@ -16,6 +19,6 @@ public interface ILectureRepository {
 	 */
 	public int insert(String lectureName,String grade,String department,String format,String term);
 	
-	public void dataAcsess();
+	public List<LectureItem> selectLectureItem();
 
 }

@@ -1,6 +1,5 @@
 package com.SysC.signed.lecture;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
@@ -16,17 +15,24 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import com.SysC.bean.LectureItem;
+import com.SysC.dao.ILectureRepository;
 import com.SysC.define.DepartmentDifine.DEPARTMENT_TYPE;
 import com.SysC.define.FormatDefine.FORMAT_TYPE;
 import com.SysC.define.GradeDifine.GRADE;
 import com.SysC.define.TermDefine.TERM_TYPE;
+import com.SysC.service.ILectureService;
+import com.SysC.service.LectureService;
 import com.SysC.signed.AbstractSignedPage;
+import com.google.inject.Inject;
 /**
  * 学生,教員,TAが講義を選択するページ
  */
 public class LectureSelectPage extends AbstractSignedPage{
 	private static final long serialVersionUID = -6792821600980853449L;
 
+	@Inject
+	private ILectureService lectureService;
+	
 	public LectureSelectPage(){
 
 		IModel<LectureItem> lectureItem = new Model<>(new LectureItem());
@@ -100,11 +106,10 @@ public class LectureSelectPage extends AbstractSignedPage{
 				"term",TERM_TYPE.getList(),termCR);
 		form.add(term);
 
-		//授業選択リストの作成
-		//TODO DBから講義を引っ張ってくる
-		List<LectureItem> lectureList = Arrays.asList();
-
-		add(new ListView<LectureItem>("lectureListView",lectureList){
+		//授業選択リストの作成		
+		List<LectureItem> lectureList = lectureService.selectLectureItems();
+		
+		add(new ListView<LectureItem>("lectureListView",new CompoundPropertyModel<>(lectureList)){
 			private static final long serialVersionUID = 1852295738588562550L;
 
 			@Override
@@ -120,9 +125,6 @@ public class LectureSelectPage extends AbstractSignedPage{
 					}
 
 				});
-
-				item.add(new Label("lectureGrade"));
-				item.add(new Label("lectureFormat"));
 			}
 		});
 	}
