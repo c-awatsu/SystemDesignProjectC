@@ -8,11 +8,15 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
 
+import com.SysC.bean.CommentItem;
 import com.SysC.costant.Validation;
+import com.SysC.service.ICommentService;
 import com.SysC.signed.AbstractSignedPage;
+import com.google.inject.Inject;
 
 
 public class QuestionairePage extends AbstractSignedPage{
@@ -21,7 +25,10 @@ public class QuestionairePage extends AbstractSignedPage{
 	private static final String COMMENT_LABEL = "質問を入力してください(100文字以内)";
 	private static final String OTHER_LABEL = "用件を入力してください)";
 	private static final String POSITION_LABEL = "座席番号を入力してください)";
-
+	
+	@Inject
+	private ICommentService commentService;
+	
 	public QuestionairePage(){
 		
 		//分らないボタン
@@ -47,11 +54,13 @@ public class QuestionairePage extends AbstractSignedPage{
 			}
 		};
 
-		Form<Void> submitForm1 = new Form<Void>("submitForm1"){
+		Form<CommentItem> submitForm1 = new Form<CommentItem>("submitForm1",new CompoundPropertyModel<>(model)){
 			private static final long serialVersionUID = 9158017771609638755L;
 
 			@Override
 			protected void onSubmit(){
+				super.onSubmit();
+				commentService.insertcomment(getModelObject());
 			}
 		};
 
@@ -60,7 +69,7 @@ public class QuestionairePage extends AbstractSignedPage{
 		add(submitForm1);
 
 		//TAを呼ぶ機能のドロップダウンリスト
-		List<String> businessList = Arrays.asList("課題ができた");
+		List<String> businessList = Arrays.asList("課題ができた","課題がわからない","パソコンがおかしい","その他");
 
 		DropDownChoice<String> business = new DropDownChoice<String>(
 				"business",new Model<String>(),businessList);
