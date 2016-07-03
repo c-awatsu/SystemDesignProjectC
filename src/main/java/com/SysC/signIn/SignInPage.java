@@ -19,6 +19,7 @@ import com.SysC.costant.Validation;
 import com.SysC.service.ISignService;
 import com.SysC.signUp.AdminSignUpPage;
 import com.SysC.signUp.StudentSignUpPage;
+import com.SysC.signUp.TASignUpPage;
 import com.SysC.signed.administrator.AdministratorTopPage;
 import com.SysC.signed.administrator.CreateLecturePage;
 import com.SysC.signed.lecture.LectureSelectPage;
@@ -97,6 +98,17 @@ public class SignInPage extends AbstractSignInPage {
 		};
 
 		add(toStudentSignUpPage);
+		
+		Link<Void> toTASignUpPage = new Link<Void>("toTASignUpPage"){
+			private static final long serialVersionUID = 8048762509177015507L;
+
+			@Override
+			public void onClick(){
+				setResponsePage(new TASignUpPage());
+			}
+		};
+
+		add(toTASignUpPage);
 	}
 
 }
