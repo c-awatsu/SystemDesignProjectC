@@ -9,6 +9,6 @@ import com.google.inject.ImplementedBy;
 
 public interface ICommentService {
 
-	public boolean insertcomment(CommentItem commentItem);
+	public boolean insertComment(CommentItem commentItem);
 	
 }

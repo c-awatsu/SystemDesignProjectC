@@ -3,12 +3,13 @@ package com.SysC.signed.questionnaire;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.HTML5Attributes;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
 
@@ -37,35 +38,42 @@ public class QuestionairePage extends AbstractSignedPage{
 
 			@Override
 			public void onSubmit(){
+				//questionaireService.insertNo();			
 			}
 		};
 		
 		add(noButton);
 
 		//質問を入力する
-		TextField<String> questionField = new TextField<String>("questionField"){
+		TextField<String> questionField = new TextField<String>("questionField",new Model<String>()){
 			private static final long serialVersionUID = -6267911770761339659L;
 			@Override
 			protected void onInitialize() {
 				super.onInitialize();
+				setOutputMarkupPlaceholderTag(true);
 				add(StringValidator.lengthBetween(Validation.COMMENT_MIN_LENGTH, Validation.COMMENT_MAX_LENGTH));
 				setLabel(Model.of(COMMENT_LABEL));
 				add(new HTML5Attributes());
 			}
 		};
-
-		Form<CommentItem> submitForm1 = new Form<CommentItem>("submitForm1",new CompoundPropertyModel<>(model)){
-			private static final long serialVersionUID = 9158017771609638755L;
-
+		
+		
+		Form<CommentItem> submitForm1 = new Form<CommentItem>("submitForm1",new Model<CommentItem>(new CommentItem()));
+		
+		AjaxButton submitButton = new AjaxButton("submitButton",submitForm1){
+			private static final long serialVersionUID = -3939097687487903983L;
+			
 			@Override
-			protected void onSubmit(){
-				super.onSubmit();
-				commentService.insertcomment(getModelObject());
+			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+				super.onSubmit(target, form);
+				submitForm1.getModelObject().setComment(questionField.getModelObject());
+				commentService.insertComment(submitForm1.getModelObject());
+				questionField.getModel().setObject("");
+				target.add(questionField);
 			}
 		};
-
+		submitForm1.add(submitButton);
 		submitForm1.add(questionField);
-		submitForm1.setVersioned(true);
 		add(submitForm1);
 
 		//TAを呼ぶ機能のドロップダウンリスト
@@ -105,7 +113,6 @@ public class QuestionairePage extends AbstractSignedPage{
 			}
 		};
 
-		submitForm2.setVersioned(true);
 		add(submitForm2);
 		submitForm2.add(business);
 		submitForm2.add(otherField);

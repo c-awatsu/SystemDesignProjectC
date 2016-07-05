@@ -10,7 +10,7 @@ public class CommentService implements ICommentService{
 	private ICommentRepository commentRepository;
 
 	@Override
-	public boolean insertcomment(CommentItem commentItem){
+	public boolean insertComment(CommentItem commentItem){
 		return commentRepository.insert(
 				commentItem.getComment()
 		)==1;				
