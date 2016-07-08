@@ -14,7 +14,7 @@ public class QuestionaireService implements IQuestionaireService{
 		if(count == 0){
 			questionaireRepository.update(count);
 		}else{
-			questionaireRepository.update(+1);
+			questionaireRepository.update(count);
 		}
 		return false;
 	}

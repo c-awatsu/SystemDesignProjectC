@@ -11,7 +11,9 @@
 			<table border="0">
 				<tr>
 					<td width="300" valign="top" >
+					<form name="submitForm" wicket:id="submitForm">
 						<input type="submit" wicket:id="no" value="分らない" />
+					</form>
 					</td>
 					<td width="300" valign="top" >
 					<div align="right">
@@ -27,8 +29,8 @@
 						<option value="business3">パソコンがおかしい</option>
 						<option value="business4">その他</option>
 						</select> <input type="text" wicket:id="otherField" style="width:300px;"/>
-						<input type="text" wicket:id="positionField" style="width:300px;"/><br/>
-						<input type="submit" />
+						<!-- <input type="text" wicket:id="positionField" style="width:300px;"/><br/> -->
+						<input type="submit" wicket:id="submitButton2" value="送信" /><br /><br />
 						</form>
 					</div>
 					</td>

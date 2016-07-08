@@ -6,6 +6,8 @@ import com.google.inject.ImplementedBy;
 
 public interface IQuestionaireRepository {
 
+//	public int insert();
+	
 	public int selectNo();
 	
 	public int update(int count);
