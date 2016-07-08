@@ -16,6 +16,7 @@ import org.apache.wicket.validation.validator.StringValidator;
 import com.SysC.bean.CommentItem;
 import com.SysC.costant.Validation;
 import com.SysC.service.ICommentService;
+import com.SysC.service.IQuestionaireService;
 import com.SysC.signed.AbstractSignedPage;
 import com.google.inject.Inject;
 
@@ -29,6 +30,7 @@ public class QuestionairePage extends AbstractSignedPage{
 	
 	@Inject
 	private ICommentService commentService;
+	private IQuestionaireService questionaireService;
 	
 	public QuestionairePage(){
 		
@@ -38,7 +40,7 @@ public class QuestionairePage extends AbstractSignedPage{
 
 			@Override
 			public void onSubmit(){
-				//questionaireService.insertNo();			
+				questionaireService.upsertNo();			
 			}
 		};
 		

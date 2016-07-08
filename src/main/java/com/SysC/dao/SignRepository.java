@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.SysC.JDBCUtill;
-import com.SysC.bean.LectureItem;
-import com.SysC.define.GradeDifine.GRADE;
 
 public class SignRepository implements ISignRepository{
 

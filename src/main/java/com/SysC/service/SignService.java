@@ -8,7 +8,6 @@ import java.util.Optional;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 
-import com.SysC.bean.LectureItem;
 import com.SysC.bean.Sign;
 import com.SysC.bean.SignIn;
 import com.SysC.bean.SignUp;

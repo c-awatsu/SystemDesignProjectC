@@ -1,11 +1,5 @@
 package com.SysC.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Optional;
-
-import com.SysC.JDBCUtill;
 import com.SysC.dao.IQuestionaireRepository;
 import com.google.inject.Inject;
 
@@ -16,11 +10,11 @@ public class QuestionaireService implements IQuestionaireService{
 
 	@Override
 	public boolean upsertNo() {
-		Optional<Integer> count = questionaireRepository.selectNo();
-		if(count){
-			questionaireRepository.update();
+		int count = questionaireRepository.selectNo();
+		if(count == 0){
+			questionaireRepository.update(count);
 		}else{
-			
+			questionaireRepository.update(+1);
 		}
 		return false;
 	}
