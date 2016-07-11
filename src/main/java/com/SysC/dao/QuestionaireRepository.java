@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import com.SysC.JDBCUtill;
 
 public class QuestionaireRepository implements IQuestionaireRepository{
-	
+
 //	@Override
 //	public int insert(){
 //		int result = 0;
@@ -22,7 +22,7 @@ public class QuestionaireRepository implements IQuestionaireRepository{
 //		}
 //		return result;
 //	}
-	
+
 	public int selectNo(){
 		int result = 0;
 		String sql = "select no from questionnaire where questionnaire_id =1";
@@ -37,7 +37,7 @@ public class QuestionaireRepository implements IQuestionaireRepository{
 		}
 		return result;
 	}
-	
+
 	@Override
 	public int update(int count){
 		int result = 0;

@@ -90,3 +90,4 @@ alter table lecture add check (term = '春学期' or term = '秋学期');
 alter table lecture drop constraint lecture_required_check;
 alter table lecture add check (required='必修' or required='選択');
 alter table business_template add other text;
+alter table business_template add position text;
