@@ -145,10 +145,10 @@ public class QuestionairePage extends AbstractSignedPage{
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
-				submitForm2.getModelObject().setBusiness(business.getValue());
+				submitForm2.getModelObject().setBusiness(business.getModelObject().getLabel());
 				submitForm2.getModelObject().setOther(otherField.getModelObject());
-				submitForm2.getModelObject().setCol(col.getValue());
-				submitForm2.getModelObject().setRow(row.getValue());
+				submitForm2.getModelObject().setCol(col.getModelObject().getLabel());
+				submitForm2.getModelObject().setRow(row.getModelObject().getLabel());
 				
 				businessService.insertBusiness(submitForm2.getModelObject());
 			}
