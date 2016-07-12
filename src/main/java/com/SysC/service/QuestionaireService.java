@@ -1,5 +1,8 @@
 package com.SysC.service;
 
+import org.apache.wicket.util.lang.Objects;
+
+import com.SysC.bean.QuestionnaireItem;
 import com.SysC.dao.IQuestionaireRepository;
 import com.google.inject.Inject;
 
@@ -10,11 +13,13 @@ public class QuestionaireService implements IQuestionaireService{
 
 	@Override
 	public boolean upsertNo() {
-		int count = questionaireRepository.selectNo();
-		if(count == 0){
-			questionaireRepository.update(count);
+		QuestionnaireItem count = questionaireRepository.selectNo();
+		if(Objects.equal(count.getNo(),-1)){
+			System.out.println("******insert******");
+			questionaireRepository.insert();
 		}else{
-			questionaireRepository.update(count);
+			System.out.println("******update******");
+			questionaireRepository.update(count.getNo(),count.getQuestionnaireId());
 		}
 		return false;
 	}

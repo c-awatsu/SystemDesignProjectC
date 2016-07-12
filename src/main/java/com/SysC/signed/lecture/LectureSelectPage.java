@@ -46,7 +46,7 @@ public class LectureSelectPage extends AbstractSignedPage{
 			@Override
 			protected void onSubmit() {
 				super.onSubmit();
-				//絞り込みをかける
+				//TODO 絞り込みをかける
 			}
 		};
 		add(form);

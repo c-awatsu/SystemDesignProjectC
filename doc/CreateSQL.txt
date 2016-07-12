@@ -84,10 +84,22 @@ alter table lecture drop grade;
 alter table lecture add grade text;
 alter table lecture add check(grade = '1年' or grade ='2年' or grade ='3年' or grade = '4年');
 alter table lecture alter column required type text;
-alter table lecture  add check(required = 'required' or required = 'selection')
+alter table lecture add check(required = 'required' or required = 'selection')
 alter table lecture add term text;
 alter table lecture add check (term = '春学期' or term = '秋学期');
 alter table lecture drop constraint lecture_required_check;
 alter table lecture add check (required='必修' or required='選択');
 alter table business_template add other text;
-alter table business_template add position text;
+alter table questionnaire drop no;
+alter table questionnaire add no integer;
+
+create table call_log(
+	call_log_id serial primary key,
+	lecture_id integer REFERENCES lecture(lecture_id) on update cascade on delete cascade,
+	business text,
+	other text,
+	col_position text,
+	row_position text,
+	time timestamp with time zone
+);
+	

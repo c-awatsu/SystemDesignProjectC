@@ -13,7 +13,9 @@ public class BusinessService implements IBusinessService{
 	public boolean insertBusiness(BusinessItem businessItem){
 		return businessRepository.insertBusiness(
 				businessItem.getBusiness().getLabel(),
-				businessItem.getOther()
+				businessItem.getOther(),
+				businessItem.getCol().getLabel(),
+				businessItem.getRow().getLabel()
 		)==1;				
 	}
 

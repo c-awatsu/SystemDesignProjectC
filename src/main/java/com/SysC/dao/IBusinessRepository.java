@@ -6,6 +6,6 @@ import com.google.inject.ImplementedBy;
 
 public interface IBusinessRepository {
 	
-	public int insertBusiness(String business,String other);
+	public int insertBusiness(String business,String other,String col,String row);
 	
 }

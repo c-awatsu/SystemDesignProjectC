@@ -8,7 +8,7 @@ public class BusinessDefine {
 	public static enum BUSINESS_TYPE{
 		KADAI1("KADAI1","課題ができた"),
 		KADAI2("KADAI2","課題がわからない"),
-		PC("PC","グローバルシステムデザイン学科"),
+		PC("PC","PCが不調"),
 		OTHER("other","その他"),
 		UNKNOWN("unknown","不明");
 		

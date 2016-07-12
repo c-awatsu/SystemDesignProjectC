@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.validator.StringValidator;
 
@@ -16,6 +17,8 @@ import com.SysC.bean.BusinessItem;
 import com.SysC.bean.CommentItem;
 import com.SysC.costant.Validation;
 import com.SysC.define.BusinessDefine.BUSINESS_TYPE;
+import com.SysC.define.ColDifine.COL_TYPE;
+import com.SysC.define.RowDifine.ROW_TYPE;
 import com.SysC.service.IBusinessService;
 import com.SysC.service.ICommentService;
 import com.SysC.service.IQuestionaireService;
@@ -32,24 +35,23 @@ public class QuestionairePage extends AbstractSignedPage{
 	
 	@Inject
 	private ICommentService commentService;
+	@Inject
 	private IQuestionaireService questionaireService;
+	@Inject
 	private IBusinessService businessService;
 	
 	public QuestionairePage(){
 		
 		//分らないボタン
-		Form<Void> submitForm = new Form<Void>("submitForm");
-		Button noButton = new Button("no"){
+		Link<Void> noButton = new Link<Void>("no"){
 			private static final long serialVersionUID = -3692659795986503461L;
-
 			@Override
-			public void onSubmit(){
+			public void onClick(){
 				questionaireService.upsertNo();
 			}
 		};
 		
-		submitForm.add(noButton);
-		add(submitForm);
+		add(noButton);
 
 
 		//質問を入力する
@@ -110,15 +112,29 @@ public class QuestionairePage extends AbstractSignedPage{
 		};
 
 		//座席位置を指定する
-//		TextField<String> positionField = new TextField<String>("positionField"){
-//			private static final long serialVersionUID = -6267911770761339659L;
-//			@Override
-//			protected void onInitialize() {
-//				super.onInitialize();
-//				setLabel(Model.of(POSITION_LABEL));
-//				add(new HTML5Attributes());
-//			}
-//		};
+		IChoiceRenderer<COL_TYPE> colCR = new ChoiceRenderer<COL_TYPE>(){
+			private static final long serialVersionUID = 7156132970439710099L;
+
+			@Override
+			public Object getDisplayValue(COL_TYPE object) {
+				return object.getLabel();
+			}
+		};
+		
+		DropDownChoice<COL_TYPE> col  = new DropDownChoice<COL_TYPE>(
+				"col",new Model<COL_TYPE>(),COL_TYPE.getList(),colCR);
+		
+		IChoiceRenderer<ROW_TYPE> rowCR = new ChoiceRenderer<ROW_TYPE>(){
+			private static final long serialVersionUID = 7156132970439710099L;
+
+			@Override
+			public Object getDisplayValue(ROW_TYPE object) {
+				return object.getLabel();
+			}
+		};
+		
+		DropDownChoice<ROW_TYPE> row  = new DropDownChoice<ROW_TYPE>(
+				"row",new Model<ROW_TYPE>(),ROW_TYPE.getList(),rowCR);
 
 		//TAを呼ぶ際に用いる送信ボタン
 		Form<BusinessItem> submitForm2 = new Form<BusinessItem>("submitForm2",new Model<BusinessItem>(new BusinessItem()));
@@ -129,8 +145,11 @@ public class QuestionairePage extends AbstractSignedPage{
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
 				super.onSubmit(target, form);
-				submitForm2.getModelObject();
+				submitForm2.getModelObject().setBusiness(business.getValue());
 				submitForm2.getModelObject().setOther(otherField.getModelObject());
+				submitForm2.getModelObject().setCol(col.getValue());
+				submitForm2.getModelObject().setRow(row.getValue());
+				
 				businessService.insertBusiness(submitForm2.getModelObject());
 			}
 		};
@@ -138,7 +157,8 @@ public class QuestionairePage extends AbstractSignedPage{
 		submitForm2.add(submitButton2);
 		submitForm2.add(business);
 		submitForm2.add(otherField);
-		//submitForm2.add(positionField);
+		submitForm2.add(col);
+		submitForm2.add(row);
 		add(submitForm2);
 	}
 }
