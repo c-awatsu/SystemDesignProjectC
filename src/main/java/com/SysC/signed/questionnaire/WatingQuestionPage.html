@@ -5,19 +5,21 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<table>
-		<tr>
-			<th>用件</th>
-		</tr>
-		<tr wicket:id="businessListView">
-			<td wicket:id="business">ここに用件を表示します</td>
-			<td><button type="submit" wicket:id="correspondence" value="対応" ></button></td>
+<wicket:extend>
+		<table>
+			<tr wicket:id="businessListView">
+				<td wicket:id="business">ここに用件を表示します</td>
+				<td wicket:id="other">ここにその他の用件を表示します</td>
+				<td wicket:id="col">ここに座席の縦軸を表示します</td>
+				<td wicket:id="row">ここに座席の横軸を表示します</td>
+
+				<!-- <td><button type="submit" wicket:id="correspondence" value="対応" ></button></td>
 			<td><button type="submit" wicket:id="CorrespondenceNow" value="対応中" ></button></td>
 			<td><button type="submit" wicket:id="complete" value="解決" ></button></td>
-			<td><button type="submit" wicket:id="finish" value="終了" ></button></td>
-		</tr>
-	</table>
-	<input type="submit" wicket:id="lectureFinish" value="授業終了" />
-
+			<td><button type="submit" wicket:id="finish" value="終了" ></button></td> -->
+			</tr>
+		</table>
+		<!-- <input type="submit" wicket:id="lectureFinish" value="授業終了" /> -->
+		</wicket:extend>
 </body>
 </html>
