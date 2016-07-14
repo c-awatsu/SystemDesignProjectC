@@ -33,11 +33,11 @@ public class BusinessRepository implements IBusinessRepository{
 		return result;
 	}
 	
-	//lectureテーブルのデータベースにアクセスして値を取り出す
+	//call_logテーブルのデータベースにアクセスして値を取り出す
 	@Override
 	public List<BusinessItem> selectBusinessItems(){
 		List<BusinessItem> businessItems = new ArrayList<>();
-		String sql = "select business,other,col,row from lecture";
+		String sql = "select business,other,col_position,row_position from call_log";
 		try(Connection conn = JDBCUtill.getConnection()){
 			try(PreparedStatement pstmt = conn.prepareStatement(sql)){
 				ResultSet result = pstmt.executeQuery();

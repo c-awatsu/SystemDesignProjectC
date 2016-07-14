@@ -21,7 +21,6 @@ public class WatingQuestionPage extends AbstractSignedPage{
 	public WatingQuestionPage(){
 		//用件表示リスト
 		List<BusinessItem> businessList = businessService.selectBusinessItems();
-
 		add(new ListView<BusinessItem>("businessListView",businessList){
 
 			private static final long serialVersionUID = 1L;
@@ -29,10 +28,10 @@ public class WatingQuestionPage extends AbstractSignedPage{
 			@Override
 			protected void populateItem(ListItem<BusinessItem> item){
 				
-				item.add(new Label("business",businessList.get(item.getIndex()).getBusiness()));
-				item.add(new Label("other",businessList.get(item.getIndex()).getOther()));
-				item.add(new Label("col",businessList.get(item.getIndex()).getCol()));
-				item.add(new Label("row",businessList.get(item.getIndex()).getRow()));
+				item.add(new Label("business","用件：" + businessList.get(item.getIndex()).getBusiness().getLabel()));
+				item.add(new Label("other","その他：" + businessList.get(item.getIndex()).getOther()));
+				item.add(new Label("col","席番号：" + businessList.get(item.getIndex()).getCol().getLabel()));
+				item.add(new Label("row",businessList.get(item.getIndex()).getRow().getLabel()));
 				
 			}
 		});
