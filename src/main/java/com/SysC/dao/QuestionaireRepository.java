@@ -7,10 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.wicket.util.lang.Objects;
-
 import com.SysC.JDBCUtill;
-import com.SysC.bean.LectureItem;
 import com.SysC.bean.QuestionnaireItem;
 
 public class QuestionaireRepository implements IQuestionaireRepository{
