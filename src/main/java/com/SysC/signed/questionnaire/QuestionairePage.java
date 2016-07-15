@@ -30,7 +30,7 @@ public class QuestionairePage extends AbstractSignedPage{
 	private static final long serialVersionUID = -5543542778506984465L;
 
 	private static final String COMMENT_LABEL = "質問を入力してください(100文字以内)";
-	private static final String OTHER_LABEL = "その他を選んだ場合はここに用件を入力してください";
+	private static final String OTHER_LABEL = "質問の詳細で書きたいことがあればお書きください";
 	private static final String POSITION_LABEL = "座席番号を入力してください";
 	
 	@Inject
