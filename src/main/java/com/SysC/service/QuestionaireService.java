@@ -1,5 +1,7 @@
 package com.SysC.service;
 
+import java.util.List;
+
 import org.apache.wicket.util.lang.Objects;
 
 import com.SysC.bean.QuestionnaireItem;
@@ -7,7 +9,7 @@ import com.SysC.dao.IQuestionaireRepository;
 import com.google.inject.Inject;
 
 public class QuestionaireService implements IQuestionaireService{
-	
+
 	@Inject
 	private IQuestionaireRepository questionaireRepository;
 
@@ -22,5 +24,11 @@ public class QuestionaireService implements IQuestionaireService{
 			questionaireRepository.update(count.getNo(),count.getQuestionnaireId());
 		}
 		return false;
+	}
+
+	@Override
+	public List<QuestionnaireItem> selectQuestionnaireItems(){
+		return questionaireRepository.selectQuestionnaireItem();
+
 	}
 }

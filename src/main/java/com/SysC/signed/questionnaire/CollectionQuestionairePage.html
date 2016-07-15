@@ -5,28 +5,14 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<form wicket:id="startButton" method="post">
-		<input type="submit" wicket:id="start" value="セッション開始" /> <input
-			type="text" wicket:id="sessionField" />
-	</form>
-
-	<form wicket:id="finishButton" method="post">
-		<input type="submit" wicket:id="finish" value="授業終了" />
-	</form>
-
-	<table>
-		<tr>
-			<th>順位</th>
-			<th>不明点</th>
-		</tr>
-		<tr wicket:id="studentCommentList">
-			<td wicket:id="lunk">1</td>
-			<td wicket:id="comment">クラス</td>
-		</tr>
-	</table>
-
-	<form wicket:id="resetButton">
-		<input type="submit" wicket:id="reset" value="リセット" />
-	</form>
+<wicket:extend>
+		<div align="center">
+			<table>
+				<tr wicket:id="questionnaireListView">
+					<td wicket:id="no">ここに用件を表示します</td>
+				</tr>
+			</table>
+		</div>
+</wicket:extend>
 </body>
 </html>

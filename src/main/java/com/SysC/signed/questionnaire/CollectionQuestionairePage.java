@@ -12,14 +12,43 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.eclipse.jetty.client.Origin.Address;
 
+import com.SysC.bean.LectureItem;
+import com.SysC.bean.QuestionnaireItem;
+import com.SysC.service.IQuestionaireService;
 import com.SysC.signed.AbstractSignedPage;
+import com.google.inject.Inject;
 
 public class CollectionQuestionairePage extends AbstractSignedPage{
 	private static final long serialVersionUID = 1L;
 
-	public CollectionQuestionairePage(){
+	@Inject
+	private IQuestionaireService questionnaireService;
 
-		TextField<String> sessionField = new TextField<String>(
+	public CollectionQuestionairePage() {
+
+
+		List<QuestionnaireItem> questionnareList = questionnaireService.selectQuestionnaireItems();
+		add(new ListView<QuestionnaireItem>("questionnaireListView",questionnareList){
+
+			private static final long serialVersionUID = 880830596271356188L;
+
+			@Override
+			protected void populateItem(ListItem<QuestionnaireItem> item){
+				item.add(new Label("no",+ questionnareList.get(item.getIndex()).getNo()));
+			}
+
+
+		});
+	}
+}
+
+
+
+
+
+
+
+		/*TextField<String> sessionField = new TextField<String>(
 				"sessionField",
 				new Model<String>(""));
 
@@ -56,9 +85,7 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 			@Override
 			public void onSubmit(){
 			}
-		};
+		};*/
 
 		//わかったorわからないの結果表示グラフ
 
-	}
-}
