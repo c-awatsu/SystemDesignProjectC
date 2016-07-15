@@ -19,46 +19,48 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 
 	public CollectionQuestionairePage(){
 
-		TextField<String> sessionField = new TextField<String>(
-				"sessionField",
-				new Model<String>(""));
+//		TextField<String> sessionField = new TextField<String>(
+//				"sessionField",
+//				new Model<String>(""));
+//
+//		//セッション開始ボタン
+//		Button startButton = new Button("startButton"){
+//			@Override
+//			public void onSubmit(){
+//			}
+//		};
+//
+//		//セッション終了ボタン
+//		Button finishButton = new Button("finishButton"){
+//			@Override
+//			public void onSubmit(){
+//			}
+//		};
+//
+//		//コメントランキング
+//		List<Address> commentList = Arrays.asList();
+//
+//		add(new ListView<Address>("addressListView",commentList){
+//
+//			private static final long serialVersionUID = 1L;
+//			@Override
+//			protected void populateItem(ListItem<Address> item){
+//				Address addr = item.getModelObject();
+//				item.add(new Label("lunk",new PropertyModel<String>(addr,"lunk")));
+//				item.add(new Label("comment",new PropertyModel<String>(addr,"comment")));
+//			}
+//		});
+//
+//		//グラフリセットボタン
+//		Button resetButton = new Button("resetButton"){
+//			@Override
+//			public void onSubmit(){
+//			}
+//		};
+		
+		//質問の表示
 
-		//セッション開始ボタン
-		Button startButton = new Button("startButton"){
-			@Override
-			public void onSubmit(){
-			}
-		};
-
-		//セッション終了ボタン
-		Button finishButton = new Button("finishButton"){
-			@Override
-			public void onSubmit(){
-			}
-		};
-
-		//コメントランキング
-		List<Address> commentList = Arrays.asList();
-
-		add(new ListView<Address>("addressListView",commentList){
-
-			private static final long serialVersionUID = 1L;
-			@Override
-			protected void populateItem(ListItem<Address> item){
-				Address addr = item.getModelObject();
-				item.add(new Label("lunk",new PropertyModel<String>(addr,"lunk")));
-				item.add(new Label("comment",new PropertyModel<String>(addr,"comment")));
-			}
-		});
-
-		//グラフリセットボタン
-		Button resetButton = new Button("resetButton"){
-			@Override
-			public void onSubmit(){
-			}
-		};
-
-		//わかったorわからないの結果表示グラフ
+		//わからないの結果表示グラフ
 
 	}
 }
