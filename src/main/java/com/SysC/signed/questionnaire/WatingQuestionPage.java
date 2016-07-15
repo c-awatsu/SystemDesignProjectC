@@ -28,14 +28,14 @@ public class WatingQuestionPage extends AbstractSignedPage {
 			@Override
 			protected void populateItem(ListItem<BusinessItem> item) {
 
-				item.add(new Label("business", "用件：" + businessList.get(item.getIndex()).getBusiness().getLabel()));
+				item.add(new Label("business", businessList.get(item.getIndex()).getBusiness().getLabel()+"　　"));
 				if (businessList.get(item.getIndex()).getOther() == null) {
-					item.add(new Label("other", "詳細：" + "          "));
+					item.add(new Label("other", "          "));
 				} else {
-					item.add(new Label("other", "詳細：" + businessList.get(item.getIndex()).getOther()));
+					item.add(new Label("other", businessList.get(item.getIndex()).getOther()+"　　"));
 				}
-				item.add(new Label("col", "席番号：" + businessList.get(item.getIndex()).getCol().getLabel()));
-				item.add(new Label("row", businessList.get(item.getIndex()).getRow().getLabel()));
+				item.add(new Label("col", businessList.get(item.getIndex()).getCol().getLabel()));
+				item.add(new Label("row", businessList.get(item.getIndex()).getRow().getLabel()+"　　"));
 
 			}
 		});
