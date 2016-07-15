@@ -1,64 +1,35 @@
 package com.SysC.signed.questionnaire;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.eclipse.jetty.client.Origin.Address;
-
+import com.SysC.bean.CommentItem;
+import com.SysC.service.ICommentService;
 import com.SysC.signed.AbstractSignedPage;
+import com.google.inject.Inject;
 
 public class CollectionQuestionairePage extends AbstractSignedPage{
 	private static final long serialVersionUID = 1L;
 
+	@Inject
+	private ICommentService commentService;
+	
 	public CollectionQuestionairePage(){
-
-//		TextField<String> sessionField = new TextField<String>(
-//				"sessionField",
-//				new Model<String>(""));
-//
-//		//セッション開始ボタン
-//		Button startButton = new Button("startButton"){
-//			@Override
-//			public void onSubmit(){
-//			}
-//		};
-//
-//		//セッション終了ボタン
-//		Button finishButton = new Button("finishButton"){
-//			@Override
-//			public void onSubmit(){
-//			}
-//		};
-//
-//		//コメントランキング
-//		List<Address> commentList = Arrays.asList();
-//
-//		add(new ListView<Address>("addressListView",commentList){
-//
-//			private static final long serialVersionUID = 1L;
-//			@Override
-//			protected void populateItem(ListItem<Address> item){
-//				Address addr = item.getModelObject();
-//				item.add(new Label("lunk",new PropertyModel<String>(addr,"lunk")));
-//				item.add(new Label("comment",new PropertyModel<String>(addr,"comment")));
-//			}
-//		});
-//
-//		//グラフリセットボタン
-//		Button resetButton = new Button("resetButton"){
-//			@Override
-//			public void onSubmit(){
-//			}
-//		};
 		
 		//質問の表示
+		List<CommentItem> commentList = commentService.selectCommentItems();
+		add(new ListView<CommentItem>("commentListView",commentList){
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(ListItem<CommentItem> item){
+				item.add(new Label("comment","用件：" + commentList.get(item.getIndex()).getComment()));
+				
+			}
+		});
 
 		//わからないの結果表示グラフ
 
