@@ -1,10 +1,17 @@
 package com.SysC.signed.questionnaire;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.wicket.ajax.AbstractAjaxTimerBehavior;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.util.time.Duration;
 
 import com.SysC.bean.CommentItem;
 import com.SysC.bean.QuestionnaireItem;
@@ -22,9 +29,9 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 	private ICommentService commentService;
 
 	public CollectionQuestionairePage() {
-
-		// わからないボタンが押された回数を表示
-		List<QuestionnaireItem> questionnareList = questionnaireService.selectQuestionnaireItems();
+		
+		//わからないを押された数の
+		final List<QuestionnaireItem> questionnareList = questionnaireService.selectQuestionnaireItems();
 		add(new ListView<QuestionnaireItem>("questionnaireListView",questionnareList){
 
 			private static final long serialVersionUID = 880830596271356188L;
@@ -36,7 +43,7 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 		});
 		
 		// 質問の表示
-		List<CommentItem> commentList = commentService.selectCommentItems();
+		final List<CommentItem> commentList = commentService.selectCommentItems();
 
 		add(new ListView<CommentItem>("commentListView",commentList){
 
@@ -47,6 +54,35 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 				item.add(new Label("comment","用件：" + commentList.get(item.getIndex()).getComment()));
 			}
 		});
+		
+		
+		
+		//自動更新用(参照:wicket_study)
+		final Label timerLabel = new Label("time",new AbstractReadOnlyModel<String>(){
+
+			private static final long serialVersionUID = 2416463737990221524L;
+
+			@Override
+			public String getObject(){
+				SimpleDateFormat formatter = 
+						new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				return formatter.format(new Date());
+			}
+		});
+		
+		add(timerLabel);
+		
+		WebMarkupContainer div = new WebMarkupContainer("dummy");
+		div.add(new AbstractAjaxTimerBehavior(Duration.seconds(2)){
+
+			private static final long serialVersionUID = -1057517743250142590L;
+
+			@Override
+			protected void onTimer(AjaxRequestTarget target){
+				setResponsePage(CollectionQuestionairePage.class);
+			}
+		});
+		add(div);
 	}
 }
 

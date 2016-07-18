@@ -1,12 +1,18 @@
 package com.SysC.signed.questionnaire;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.wicket.ajax.AbstractAjaxTimerBehavior;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.util.time.Duration;
+
 import com.SysC.bean.BusinessItem;
 import com.SysC.service.IBusinessService;
 import com.SysC.signed.AbstractSignedPage;
@@ -39,6 +45,33 @@ public class WatingQuestionPage extends AbstractSignedPage {
 
 			}
 		});
+		
+		//自動更新用(参照:wicket_study)
+				final Label timerLabel = new Label("time",new AbstractReadOnlyModel<String>(){
+
+					private static final long serialVersionUID = 2416463737990221524L;
+
+					@Override
+					public String getObject(){
+						SimpleDateFormat formatter = 
+								new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+						return formatter.format(new Date());
+					}
+				});
+				
+				add(timerLabel);
+				
+				WebMarkupContainer div = new WebMarkupContainer("dummy");
+				div.add(new AbstractAjaxTimerBehavior(Duration.seconds(2)){
+
+					private static final long serialVersionUID = -1057517743250142590L;
+
+					@Override
+					protected void onTimer(AjaxRequestTarget target){
+						setResponsePage(WatingQuestionPage.class);
+					}
+				});
+				add(div);
 
 		// Button correspondenceButton = new Button("correspondence"){
 		// private static final long serialVersionUID = -3717812991518096008L;
