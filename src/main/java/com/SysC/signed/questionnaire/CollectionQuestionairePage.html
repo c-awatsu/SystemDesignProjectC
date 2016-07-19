@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org">
+	  xmlns:wicket="http://wicket.apache.org">
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<style type="text/css"></style>
+	<wicket:link>
+    	<link rel="CollectionQuestionaire.css" type="text/css" href="style.css"/>
+	</wicket:link>
 </head>
 <body>
 	<wicket:extend>
-		<div align="center">
-			<table>
-				<tr wicket:id="questionnaireListView">
-					<td wicket:id="no">ここに用件を表示します</td>
-				</tr>
-			</table>
-			<table>
-				<tr wicket:id="commentListView">
-					<td wicket:id="comment">ここに用件を表示します</td>
-				</tr>
-			</table>
+	<div align="center">
+		<div wicket:id="questionnaireListView">
+			<h2><span wicket:id="no">わからないカウント</span></h2>
+			<br><br>
 		</div>
-		
-		<div>
-			<span wicket:id="time">1:00</span>
+
+		<!-- 外枠 -->
+		<div class="thfixscroll">
+   			 <!-- タイトル -->
+   			<table>
+       			<tr>
+					<th class=>コメント　　　更新時刻：
+					<span wicket:id="time">1:00</span>
+					<div wicket:id="dummy"></div></th>
+       			</tr>
+			<!-- データ -->
+				<tr>
+				<td colspan="2" class="none">
+				<div class="inbox">
+					<table>
+						<tr wicket:id="commentListView">
+							<td wicket:id="comment">ここに用件を表示します</td>
+						</tr>
+      				</table>
+    			</div>
+   				</td>
+   				</tr>
+   			</table>
 		</div>
-		<div wicket:id="dummy"></div>
+	</div>
 	</wicket:extend>
 </body>
 </html>

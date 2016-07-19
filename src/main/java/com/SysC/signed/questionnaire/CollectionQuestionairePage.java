@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.wicket.ajax.AbstractAjaxTimerBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -51,7 +53,7 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 
 			@Override
 			protected void populateItem(ListItem<CommentItem> item){
-				item.add(new Label("comment","用件：" + commentList.get(item.getIndex()).getComment()));
+				item.add(new Label("comment",commentList.get(item.getIndex()).getComment()));
 			}
 		});
 		
@@ -65,7 +67,7 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 			@Override
 			public String getObject(){
 				SimpleDateFormat formatter = 
-						new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+						new SimpleDateFormat("HH:mm:ss");
 				return formatter.format(new Date());
 			}
 		});
@@ -84,6 +86,13 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 		});
 		add(div);
 	}
+	
+	@Override
+	public void renderHead(IHeaderResponse response) {
+		super.renderHead(response);
+		response.render(CssHeaderItem.forUrl("bootstrap/current/css/CollectionQuestionaire.css"));
+	}
+	
 }
 
 
