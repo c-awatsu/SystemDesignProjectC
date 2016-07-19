@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.wicket.ajax.AbstractAjaxTimerBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -54,7 +56,7 @@ public class WatingQuestionPage extends AbstractSignedPage {
 					@Override
 					public String getObject(){
 						SimpleDateFormat formatter = 
-								new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+								new SimpleDateFormat("HH:mm:ss");
 						return formatter.format(new Date());
 					}
 				});
@@ -62,7 +64,7 @@ public class WatingQuestionPage extends AbstractSignedPage {
 				add(timerLabel);
 				
 				WebMarkupContainer div = new WebMarkupContainer("dummy");
-				div.add(new AbstractAjaxTimerBehavior(Duration.seconds(2)){
+				div.add(new AbstractAjaxTimerBehavior(Duration.seconds(5)){
 
 					private static final long serialVersionUID = -1057517743250142590L;
 
@@ -113,6 +115,12 @@ public class WatingQuestionPage extends AbstractSignedPage {
 		// public void onSubmit(){
 		// }
 		// };
+	}
+	
+	@Override
+	public void renderHead(IHeaderResponse response) {
+		super.renderHead(response);
+		response.render(CssHeaderItem.forUrl("bootstrap/current/css/WatingQuestion.css"));
 	}
 
 }

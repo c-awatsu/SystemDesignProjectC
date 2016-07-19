@@ -75,7 +75,7 @@ public class CollectionQuestionairePage extends AbstractSignedPage{
 		add(timerLabel);
 		
 		WebMarkupContainer div = new WebMarkupContainer("dummy");
-		div.add(new AbstractAjaxTimerBehavior(Duration.seconds(2)){
+		div.add(new AbstractAjaxTimerBehavior(Duration.seconds(5)){
 
 			private static final long serialVersionUID = -1057517743250142590L;
 
