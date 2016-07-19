@@ -1,17 +1,9 @@
 package com.SysC.signed.lecture;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.eclipse.jetty.client.Origin.Address;
 
 import com.SysC.signed.AbstractSignedPage;
 
@@ -33,18 +25,18 @@ public class LectureBusinessPage extends AbstractSignedPage{
 		add(businessForm);
 
 		//設定された用件を一覧で表すリストを表示する（削除ボタン付き）
-		List<Address> businessList = Arrays.asList();
-
-		add(new ListView<Address>("businessListView",businessList){
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void populateItem(ListItem<Address> item){
-				Address addr = item.getModelObject();
-				item.add(new Label("business",new PropertyModel<String>(addr,"business")));
-			}
-		});
+//		List<Address> businessList = Arrays.asList();
+//
+//		add(new ListView<Address>("businessListView",businessList){
+//
+//			private static final long serialVersionUID = 1L;
+//
+//			@Override
+//			protected void populateItem(ListItem<Address> item){
+//				Address addr = item.getModelObject();
+//				item.add(new Label("business",new PropertyModel<String>(addr,"business")));
+//			}
+//		});
 
 		Button deleteButton = new Button("delete"){
 			private static final long serialVersionUID = -4229970082893457553L;

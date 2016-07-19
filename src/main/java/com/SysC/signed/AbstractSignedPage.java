@@ -18,7 +18,7 @@ public class AbstractSignedPage extends WebPage{
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
-		response.render(JavaScriptHeaderItem.forUrl("jquery/current/jquery.js"));
+		response.render(JavaScriptHeaderItem.forUrl("jquery/jquery-1.11.2.min.js"));
 		response.render(CssHeaderItem.forUrl("bootstrap/current/css/bootstrap.min.css"));
 		response.render(CssHeaderItem.forUrl("bootstrap/current/css/bootstrap-theme.min.css"));
 		response.render(JavaScriptHeaderItem.forUrl("bootstrap/current/js/bootstrap.min.js"));
