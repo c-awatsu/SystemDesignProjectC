@@ -20,14 +20,12 @@
 		border:1px solid #ccc;
 		background-color:#fff;
 		height: 50px;
+		width: 60px
 	}
 	/* 表頭・項目部分の余白 */
 	.thfixscroll div {
 		margin:3px;
 	}
-	.thfixscroll div.w40  { width:40px; }
-	.thfixscroll div.w45  { width:45px; }
-	.thfixscroll div.w100 { width:100px; }
 	/* 表頭の背景色・余白 */
 	.thfixscroll div.inbox { 
 		margin:0 0 0 0; padding:0;

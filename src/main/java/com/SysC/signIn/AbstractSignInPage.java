@@ -15,7 +15,6 @@ public class AbstractSignInPage extends WebPage{
 
 		add(new Label("toTop"));
 	}
-
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);

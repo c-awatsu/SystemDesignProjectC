@@ -2,8 +2,9 @@ package com.SysC.signed.questionnaire;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.HTML5Attributes;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -31,7 +32,6 @@ public class QuestionairePage extends AbstractSignedPage{
 
 	private static final String COMMENT_LABEL = "質問を入力してください(100文字以内)";
 	private static final String OTHER_LABEL = "質問の詳細で書きたいことがあればお書きください";
-	private static final String POSITION_LABEL = "座席番号を入力してください";
 	
 	@Inject
 	private ICommentService commentService;
@@ -160,5 +160,10 @@ public class QuestionairePage extends AbstractSignedPage{
 		submitForm2.add(col);
 		submitForm2.add(row);
 		add(submitForm2);
+	}
+	@Override
+	public void renderHead(IHeaderResponse response) {
+		super.renderHead(response);
+		response.render(CssHeaderItem.forUrl("bootstrap/current/css/QuestionairePage.css"));
 	}
 }

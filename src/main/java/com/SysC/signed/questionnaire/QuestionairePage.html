@@ -10,16 +10,21 @@
 		<div align="center">
 			<table border="0">
 				<tr>
-					<td width="300" valign="top" >
-						<input type="submit" wicket:id="no" value="分らない" />
+				<!-- 分からないボタン -->
+					<td width="300" valign="middle" >
+					<button type="submit" class="btn" wicket:id="no" value="分らない">分からない</button>
 					</td>
+					
+					<!-- 送信する者たち -->
 					<td width="300" valign="top" >
 					<div align="right">
+						<h2>教員への質問</h2>
 						<form name="submitForm1" wicket:id="submitForm1">
 						<input type="text" wicket:id="questionField" style="width:300px;height:50px;"/><br />
 						<input type="submit" wicket:id="submitButton" value="送信" /><br /><br />
 						</form>
 			
+						<h2>TA呼び出し</h2>
 						<form name="submitForm2" wicket:id="submitForm2">
 						<select wicket:id="business">
 						<option value="business1">課題ができた</option>
@@ -27,7 +32,7 @@
 						<option value="business3">パソコンがおかしい</option>
 						<option value="business4">その他</option>
 						</select> 
-						<input type="text" wicket:id="otherField" style="width:300px;"/>
+						<input type="text" wicket:id="otherField" style="width:350px;"/>
 						<select wicket:id="col">
 						<option value="col1">A</option>
 						<option value="col2">B</option>
