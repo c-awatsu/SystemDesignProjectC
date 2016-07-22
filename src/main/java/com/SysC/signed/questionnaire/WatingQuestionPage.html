@@ -16,9 +16,10 @@
 			<table>
 			<thead>
 				<tr >
-					<th><div>用件</div></th>
-					<th><div>詳細</div></th>
-					<th><div>席番号</div></th>
+					<th width=20%><div>席番号</div></th>
+					<th width=40%><div>用件</div></th>
+					<th width=40%><div>詳細　</div></th>
+					
 				</tr>
 			</thead>
 			<!-- データ -->
@@ -28,10 +29,11 @@
 				<div class="inbox">
 					<table>
 						<tr wicket:id="businessListView">
-							<td wicket:id="business">ここに用件を表示します</td>
-							<td wicket:id="other">ここにその他の用件を表示します</td>
-							<td><div wicket:id="col">ここに座席の縦軸を表示します</div>
+						<td width=20%><div wicket:id="col">ここに座席の縦軸を表示します</div>
 								<div wicket:id="row">ここに座席の横軸を表示します</div></td>
+							<td width=40% wicket:id="business">ここに用件を表示します</td>
+							<td width=40% wicket:id="other">ここにその他の用件を表示します</td>
+							
 								
 							<!-- <td><button type="submit" wicket:id="correspondence" value="対応" ></button></td>
 							<td><button type="submit" wicket:id="CorrespondenceNow" value="対応中" ></button></td>
